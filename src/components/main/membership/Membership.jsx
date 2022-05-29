@@ -35,7 +35,7 @@ export default function Membership() {
       // key="form"
       <div className="membership fadeInUp">
         {form === "FormPayment" && (
-          <FormPayment onSubmit={onFormPaymentSubmit} close={disableForms} />
+          <FormPayment onSubmit={onFormPaymentSubmit} close={disableForm} />
         )}
         {form === "HouseholdForm" && (
           <HouseholdForm onSubmit={onHouseholdFormSubmit} close={disableForm} />
@@ -72,7 +72,7 @@ export default function Membership() {
 
 const FormPayment = ({ onSubmit, close }) => {
   return (
-    <div className="booking booking--small">
+    <div className="booking booking--small fadeInUp">
       <button type="button" className="booking__close" onClick={close}>
         <span className="custIcon custIcon--error"></span>
       </button>
@@ -134,7 +134,7 @@ const FormPayment = ({ onSubmit, close }) => {
 
 const HouseholdForm = ({ onSubmit, close }) => {
   return (
-    <div className="booking booking--membership">
+    <div className="booking booking--membership fadeInUp">
       <button type="button" className="booking__close" onClick={close}>
         <span className="custIcon custIcon--error"></span>
       </button>

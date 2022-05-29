@@ -1,0 +1,323 @@
+.welcome {
+  margin-bottom: 40px;
+  &__row {
+    display: flex;
+    justify-content: space-between;
+
+    & > .card {
+      width: calc(50% - 5px);
+      max-width: 535px;
+      &__row {
+        .card {
+          width: fit-content;
+        }
+      }
+    }
+  }
+}
+
+.tabs {
+  &__buttons {
+    position: relative;
+    padding: 0 25px;
+    z-index: 1;
+
+    &-inner {
+      display: flex;
+      overflow-y: auto;
+      @include hideScrollBar;
+    }
+
+    button {
+      padding: 10px;
+      border-radius: 5px 5px 0 0;
+      margin-right: 5px;
+      border: 1px solid transparent;
+      border-bottom-color: $white;
+      background: transparent;
+      min-width: 95px;
+      transition: 0.2s ease-out;
+      transition-property: border, background-color, color;
+      flex-shrink: 0;
+      white-space: nowrap;
+
+      //font
+      color: $gray;
+      font-family: $font-main;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 1;
+
+      &:hover {
+        color: $black-1;
+      }
+      &.active {
+        border: 1px solid $lightblue;
+        border-bottom-color: $white;
+        background: $white;
+        //font
+        color: $black-01;
+      }
+    }
+  }
+  &__body {
+    position: relative;
+    top: -2px;
+    border: 1px solid $lightblue;
+    border-radius: 8px;
+    background: $white;
+    padding: 20px 25px;
+    min-height: 40vh;
+
+    &-title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+
+      &-ico {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        color: $main;
+        background: $lightblue;
+        border-radius: 50%;
+        margin-right: 15px;
+        svg {
+          width: 20px;
+          height: auto;
+        }
+      }
+      &-text {
+        cursor: context-menu;
+        color: $black;
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 1;
+      }
+      &-button {
+        margin-left: auto;
+      }
+    }
+
+    &-row {
+      display: flex;
+      justify-content: space-between;
+      max-width: 940px;
+      flex-wrap: wrap;
+    }
+    &-column {
+      width: calc(50% - 10px);
+      max-width: 390px;
+
+      .button {
+        margin-top: 35px;
+        padding: 15px 20px;
+        min-width: 125px;
+
+        // font
+        font-family: $font-extra;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+      .customSelect {
+        &__label {
+          border: unset;
+          border-radius: 10px;
+          background: #ffffff;
+          box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        & + .customLabel {
+          margin-top: 30px;
+        }
+      }
+      .customText {
+        textarea {
+          border: unset;
+          border-radius: 10px;
+          background: #ffffff;
+          box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
+
+          //font
+          color: $black;
+          font-family: $font-main;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 1.5;
+
+          &::placeholder {
+            color: $gray;
+          }
+        }
+      }
+    }
+  }
+  &__item {
+    display: flex;
+    align-items: center;
+
+    box-sizing: border-box;
+    background: $white;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    padding: 0 20px;
+    height: 45px;
+
+    &--content {
+      padding: 10px 20px;
+      flex-direction: column;
+      height: unset;
+    }
+
+    & + .tabs__item {
+      margin-top: 30px;
+    }
+
+    &-ico {
+      display: flex;
+      color: $main;
+      margin-right: 15px;
+      svg {
+        height: auto;
+        width: 20px;
+        max-height: 20px;
+      }
+    }
+    &-label {
+      flex-grow: 1;
+      color: $gray;
+
+      font-family: $font-main;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    &-buttons {
+      display: flex;
+
+      &-bin {
+        color: $red;
+      }
+      &-pen {
+        color: $main;
+      }
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: transparent;
+        margin-right: 20px;
+        transition: 0.2s ease-out;
+
+        svg {
+          width: 15px;
+          height: auto;
+        }
+        &:last-child {
+          margin: 0;
+        }
+        &:hover {
+          background: $white-1;
+        }
+      }
+    }
+    &-row {
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+    &-content {
+      display: flex;
+      align-items: flex-start;
+      width: 100%;
+      margin-top: 20px;
+
+      &-title {
+        color: $gray;
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        white-space: nowrap;
+        margin-right: 5px;
+      }
+      &-para {
+        color: $gray;
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 18px;
+        text-align: justify;
+      }
+    }
+  }
+}
+
+@mixin tabs-sm-md {
+  .tabs {
+    border: 1px solid $lightblue;
+    background: $white;
+    border-radius: 8px;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    &__buttons {
+      padding: 0;
+      button {
+        border-radius: 0;
+        &.active {
+          background: rgba($color: $main, $alpha: 0.05);
+        }
+        &:last-child {
+          margin: 0;
+        }
+      }
+    }
+    &__body {
+      border: none;
+      border-top: 1px solid $lightblue;
+      background: none;
+
+      &-column {
+        width: 100%;
+        max-width: unset;
+        margin-bottom: 30px;
+      }
+    }
+  }
+}
+@mixin tabs-xxsm-xsm {
+  .tabs {
+    &__body {
+      padding: 10px 15px;
+      &-title {
+        &-ico {
+          width: 35px;
+          height: 35px;
+          svg {
+            max-height: 20px;
+          }
+        }
+        &-text {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

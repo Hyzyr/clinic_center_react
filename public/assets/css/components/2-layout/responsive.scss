@@ -1,0 +1,116 @@
+// (max-width: 1366px)
+@include xxlg-xxxlg {
+  @include main-xxlg-xxxlg;
+  @include sidebar-xxlg-xxxlg;
+  @include login-xxlg-xxxlg;
+  @include booking-xxlg-xxxlg;
+  @include calendar-xxlg-xxxlg;
+}
+
+// (max-width: 1280px)
+@include xlg-xxlg-extra {
+  @include login-xlg-xxlg-extra;
+}
+// (max-width: 1200px)
+@include xlg-xxlg {
+  @include header-xlg-xxlg;
+  @include main-xlg-xxlg;
+  @include sidebar-xlg-xxlg;
+  @include login-xlg-xxlg;
+  @include booking-xlg-xxlg;
+  @include calendar-xlg-xxlg;
+  @include appointments-xlg-xxlg;
+}
+
+// (max-width: 1024px)
+@include lg-xlg {
+  @include main-lg-xlg;
+  @include header-lg-xlg;
+  @include sidebar-lg-xlg;
+  @include login-lg-xlg;
+  @include sidebar-lg-xlg;
+  @include login-lg-xlg;
+  @include appointments-lg-xlg;
+}
+
+// (max-width: 768px)
+@include sm-md {
+  @include header-sm-md;
+  @include main-sm-md;
+  @include login-sm-md;
+  @include tabs-sm-md;
+  @include booking-sm-md;
+  @include calendar-sm-md;
+  @include appointments-sm-md;
+  @include contacts-sm-md;
+  @include patient-sm-md;
+}
+
+// (max-width: 660px)
+@include sm-md-extra {
+  @include login-sm-md-extra;
+  @include booking-sm-md-extra;
+  @include calendar-sm-md-extra;
+  @include account-sm-md-extra;
+  @include appointments-sm-md-extra;
+}
+
+// (max-width: 540px)
+@include xsm-sm {
+  @include booking-xsm-sm;
+  @include contacts-xsm-sm;
+}
+
+// (max-width: 480px)
+@include xxsm-xsm {
+  .customInput {
+    input {
+      padding: 0 16px;
+    }
+    label {
+      left: 16px;
+    }
+    &--prefix {
+      input {
+        padding: 0 16px 0 74px;
+      }
+    }
+    &--icon {
+      input {
+        padding: 0 32px 0 16px;
+      }
+    }
+  }
+  .customText {
+    textarea {
+      padding: 10px 16px;
+    }
+  }
+  .customSelect {
+    &__label {
+      padding: 0 32px 0 16px;
+    }
+    &__list {
+      padding: 15px;
+    }
+  }
+
+  @include header-xxsm-xsm;
+  @include main-xxsm-xsm;
+  @include sidebar-xxsm-xsm;
+  @include login-xxsm-xsm;
+  @include tabs-xxsm-xsm;
+  @include booking-xxsm-xsm;
+  @include calendar-xxsm-xsm;
+  @include account-xxsm-xsm;
+  @include patient-xxsm-xsm;
+}
+
+// (max-width: 375px)
+@include xxxsm-xxsm {
+  @include header-xxxsm-xxsm;
+  @include main-xxxsm-xxsm;
+  @include sidebar-xxxsm-xxsm;
+  @include login-xxxsm-xxsm;
+  @include booking-xxxsm-xxsm;
+}

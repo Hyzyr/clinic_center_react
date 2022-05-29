@@ -1,0 +1,59 @@
+.membership {
+  &__tabs {
+    max-width: 500px;
+
+    &-button {
+      margin-bottom: 40px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      .button {
+        height: 40px;
+        border-radius: 8px;
+        padding: 0 20px;
+        min-width: 175px;
+
+        //font
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 1;
+      }
+    }
+    .customList {
+      margin-bottom: 45px;
+    }
+  }
+  &__container {
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  .tabs {
+    &__body {
+      padding: 40px 25px;
+      &-title {
+        margin-bottom: 40px;
+      }
+    }
+  }
+  .form {
+    &__buttons {
+      margin-top: 70px;
+    }
+    &--payment {
+      .form__buttons {
+        margin-top: 30px;
+      }
+    }
+  }
+  .booking__title {
+    &--text {
+      margin-bottom: 25px;
+      .booking__title-text {
+        margin: 0;
+      }
+    }
+  }
+}

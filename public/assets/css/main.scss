@@ -1,0 +1,27 @@
+// 1-main components
+@import "./components/1-main/fonts.scss";
+@import "./components/1-main/variables.scss";
+@import "./components/1-main/animations.scss";
+@import "./components/1-main/mixin.scss";
+@import "./components/1-main/nulifier.scss";
+// 2-layout components
+@import "./components/2-layout/components.scss";
+@import "./components/2-layout/cards.scss";
+@import "./components/2-layout/mainContiner.scss";
+@import "./components/2-layout/form.scss";
+@import "./components/2-layout/header.scss";
+@import "./components/2-layout/sidebar.scss";
+@import "./components/2-layout/tabs.scss";
+
+// 3-pages components
+@import "./components/3-pages/login.scss";
+@import "./components/3-pages/booking.scss";
+@import "./components/3-pages/memebership.scss";
+@import "./components/2-layout/calendar.scss";
+@import "./components/2-layout/account.scss";
+@import "./components/2-layout/appointments.scss";
+@import "./components/2-layout/contacts.scss";
+@import "./components/2-layout/patient.scss";
+
+// responsive
+@import "./components/2-layout/responsive.scss";

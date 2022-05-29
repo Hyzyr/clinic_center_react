@@ -1,0 +1,136 @@
+@mixin frame {
+  background: $white;
+  border: 1px solid rgba($color: $stroke, $alpha: 25%);
+  box-shadow: -5px 5px 10px 2px rgba($color: $black, $alpha: 5%);
+  border-radius: 4px;
+}
+
+@mixin transition {
+  transition: all 0.2s ease-in-out 0s;
+  -moz-transition: all 0.2s ease-in-out 0s;
+}
+@mixin transition-bg {
+  transition: background 0.2s ease-in-out 0s;
+  -moz-transition: background 0.2s ease-in-out 0s;
+}
+@mixin transition-border {
+  transition: border 0.2s ease-in-out 0s;
+  -moz-transition: border 0.2s ease-in-out 0s;
+}
+@mixin transition-color {
+  transition: color 0.2s ease-in-out 0s;
+  -moz-transition: color 0.2s ease-in-out 0s;
+}
+@mixin transition-opacity {
+  transition: opacity 0.2s ease-in-out 0s;
+  -moz-transition: opacity 0.2s ease-in-out 0s;
+}
+@mixin fullImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  -o-object-fit: cover;
+}
+
+@mixin hideScrollBar {
+  & {
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+  }
+  &::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+}
+
+@mixin ellipsisOneLine {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin ellipsisOneLine {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin rotate {
+  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+}
+@mixin rotate180deg {
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+}
+@mixin rotate270deg {
+  transform: rotate(270deg);
+  -webkit-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+}
+
+///////////////// media queries
+
+@mixin xxxsm-xxsm {
+  @media (max-width: 375px) {
+    @content;
+  }
+}
+@mixin xxsm-xsm {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin xsm-sm {
+  @media (max-width: 540px) {
+    @content;
+  }
+}
+@mixin sm-md {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+@mixin sm-md-extra {
+  @media (max-width: 660px) {
+    @content;
+  }
+}
+@mixin md-lg {
+  @media (max-width: 840px) {
+    @content;
+  }
+}
+@mixin lg-xlg {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin xlg-xxlg {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+@mixin xlg-xxlg-extra {
+  @media (max-width: 1280px) {
+    @content;
+  }
+}
+@mixin xxlg-xxxlg {
+  @media (max-width: 1366px) {
+    @content;
+  }
+}
+@mixin xxxlg-xxxxlg {
+  @media (max-width: 1460px) {
+    @content;
+  }
+}

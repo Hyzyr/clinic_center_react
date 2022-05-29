@@ -1,0 +1,249 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: $white;
+  border-bottom: 1px solid $lightblue;
+  z-index: 2;
+
+  &--login {
+    display: none;
+    .auto__container {
+      padding: 0 30px;
+    }
+    .header__inner {
+      justify-content: space-between;
+      &-logo {
+        padding: 0;
+      }
+    }
+  }
+
+  &__inner {
+    display: flex;
+    height: 84px;
+    align-items: center;
+    padding: 0;
+
+    &-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 225px;
+      padding: 0 25px;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+    &-group {
+      flex-grow: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 30px;
+    }
+    &-bread {
+      display: flex;
+      align-items: center;
+
+      &-ico {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: rgba($color: $secondary, $alpha: 0.25);
+        margin-right: 15px;
+
+        svg {
+          width: 15px;
+          height: auto;
+          color: $secondary;
+        }
+      }
+      &-title {
+        color: $black;
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 1;
+      }
+    }
+    &-content {
+      display: flex;
+      align-items: center;
+
+      .button {
+        width: 185px;
+        height: 40px;
+        margin-right: 20px;
+      }
+      .bellButton {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 25px;
+        height: 25px;
+        margin-right: 20px;
+        transition: color 0.2s ease-in;
+        color: $main;
+
+        &:hover {
+          color: rgba($color: $main, $alpha: 0.8);
+        }
+
+        svg {
+          width: auto;
+          height: 20px;
+        }
+        &:after {
+          content: "";
+          position: absolute;
+          display: block;
+          top: 4%;
+          right: 3%;
+          width: 6px;
+          height: 6px;
+          background: $red;
+          border-radius: 50%;
+          border: 2px solid $white;
+        }
+      }
+      .profilePic {
+        cursor: pointer;
+        border-radius: 8px;
+        transition: opacity 0.2s ease-in;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+    &-burger {
+      display: none;
+    }
+  }
+}
+
+// media 1200px
+@mixin header-xlg-xxlg {
+  .header {
+    &__inner {
+      height: 74px;
+      &-logo {
+        width: 200px;
+      }
+    }
+  }
+}
+
+// media 1024px
+@mixin header-lg-xlg {
+  .header {
+    &__inner {
+      padding: 0 30px;
+
+      height: 75px;
+      &-logo {
+        padding: 0;
+      }
+      &-bread {
+        display: none;
+      }
+      &-content {
+        margin-left: auto;
+        .button {
+          width: 135px;
+        }
+      }
+      &-burger {
+        display: block;
+      }
+    }
+    &--login {
+      display: block;
+    }
+  }
+}
+
+// media 768px
+@mixin header-sm-md {
+  .header {
+    &__inner {
+      padding: 0 20px;
+      &-logo {
+        width: 160px;
+      }
+
+      &-group {
+        padding: 0 15px;
+      }
+      &-content {
+        .button {
+          width: 100px;
+          height: 35px;
+          font-size: 12px;
+          margin-right: 15px;
+        }
+        .bellButton {
+          margin-right: 15px;
+        }
+      }
+      &-burger {
+        .burger {
+          width: 20px;
+          height: 15px;
+          &::before,
+          &::after {
+            height: 2px;
+          }
+          span {
+            height: 2px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// media 480px
+@mixin header-xxsm-xsm {
+  .header {
+    &__inner {
+      height: 60px;
+      padding: 0 15px;
+
+      &-content {
+        .button {
+          display: none;
+        }
+      }
+    }
+  }
+}
+// media 375px
+@mixin header-xxxsm-xxsm {
+  .header {
+    &__inner {
+      height: 55px;
+      &-logo {
+        width: 140px;
+      }
+      &-group {
+        padding: 0 10px;
+      }
+
+      &-content {
+        .profilePic {
+          width: 35px;
+          height: 35px;
+        }
+      }
+    }
+  }
+}

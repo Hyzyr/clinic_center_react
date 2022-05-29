@@ -1,0 +1,123 @@
+.patient {
+  background: $white;
+  border: 1px solid rgba($color: $gray, $alpha: 0.3);
+  box-shadow: 5px 0px 11px rgba(26, 28, 29, 0.05),
+    -5px 5px 11px rgba(26, 28, 29, 0.05);
+  border-radius: 5px;
+  max-width: 950px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 25px 50px 25px;
+  box-sizing: border-box;
+
+  &__form {
+    max-width: 780px;
+    margin: 0 auto;
+    .form {
+      &__terms {
+        margin-bottom: 30px;
+      }
+      &__row {
+        margin-bottom: 40px;
+      }
+      &__column {
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+      &__buttons {
+        margin: 70px 0 0 0;
+        .button {
+          width: unset;
+          min-width: 130px;
+          padding: 0 35px;
+          height: 50px;
+          margin: 0;
+          border-radius: 6px;
+
+          //font
+          font-family: $font-extra;
+          font-style: normal;
+          font-weight: 700;
+          font-size: 16px;
+          line-height: 1;
+
+          &--secondary {
+            margin-right: 30px;
+          }
+        }
+      }
+    }
+  }
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 35px;
+
+    &-ico {
+      display: flex;
+      height: 60px;
+      width: 60px;
+
+      img {
+        @include fullImage;
+      }
+    }
+    &-text {
+      color: $black;
+      font-family: $font-main;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 1;
+      margin-top: 20px;
+      text-align: center;
+    }
+  }
+}
+
+@mixin patient-sm-md {
+  .patient {
+    padding: 30px 20px;
+    &__title {
+      &-text {
+        font-size: 16px;
+      }
+    }
+    .form {
+      &__row {
+        flex-direction: column;
+        margin: 0 0 25px 0;
+      }
+      &__column {
+        width: 100%;
+        margin: 0 0 20px 0;
+        &--wide {
+          margin: 0;
+        }
+      }
+      &__terms {
+        &-para {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+@mixin patient-xxsm-xsm {
+  .patient {
+    .form {
+      &__buttons {
+        margin: 25px 0 0 0;
+        flex-direction: column-reverse;
+        .button {
+          width: 100%;
+          margin: 5px 0;
+        }
+      }
+    }
+  }
+}

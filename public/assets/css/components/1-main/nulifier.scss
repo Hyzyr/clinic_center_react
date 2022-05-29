@@ -1,0 +1,133 @@
+/*** 
+
+====================================================================
+	Reset
+====================================================================
+
+***/
+// :root {
+//   font-size: calc(1vw + 0.6em);
+// }
+html {
+  scroll-behavior: smooth;
+}
+* {
+  margin: 0px;
+  padding: 0px;
+  border: none;
+  outline: none;
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+button,
+input,
+textarea {
+  outline: none;
+  background: transparent;
+}
+button:focus {
+  outline: none;
+}
+button:focus {
+  outline: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="date"] {
+  -webkit-appearance: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba($color: $black, $alpha: 0.2);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba($color: $black, $alpha: 0.3);
+}
+
+body {
+  font-family: $font-main;
+  font-size: 14px;
+  color: $black;
+  line-height: 1.7em;
+  font-weight: 400;
+  background: $white-1;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+}
+body.active {
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: $black;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+  font-weight: normal;
+  margin: 0px;
+  background: none;
+  line-height: 1.6em;
+}
+/* Typography */
+h1 {
+  font-size: 4em;
+}
+h2 {
+  font-size: 40px;
+}
+h3 {
+  font-size: 34px;
+}
+h4 {
+  font-size: 22px;
+}
+h5 {
+  font-size: 20px;
+}
+h6 {
+  font-size: 18px;
+}
+p {
+  position: relative;
+  line-height: 1.5em;
+}
+.auto__container {
+  position: relative;
+  max-width: 1640px;
+  margin: 0 auto;
+  padding: 0 30px 0 300px;
+}
+ul,
+li {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}

@@ -1,0 +1,61 @@
+.main {
+  padding: 115px 30px 30px 305px;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  &--noheader {
+    padding: 30px 30px 30px 305px;
+  }
+  &--login {
+    padding: 0 30px 0 565px;
+  }
+}
+
+// media 1366px
+@mixin main-xxlg-xxxlg {
+  .main {
+    &--login {
+      padding: 0 30px 0 430px;
+    }
+  }
+}
+
+// media 1200px
+@mixin main-xlg-xxlg {
+  .main {
+    padding: 105px 30px 30px 305px;
+    &--noheader {
+      padding: 30px 30px 30px 305px;
+    }
+    &--login {
+      padding: 0 30px 0 360px;
+    }
+  }
+}
+
+// media 1024px
+@mixin main-lg-xlg {
+  .main {
+    padding: 95px 30px 30px 30px;
+  }
+}
+
+// media 768px
+@mixin main-sm-md {
+  .main {
+    padding: 95px 20px 20px 20px;
+  }
+}
+
+// media 480px
+@mixin main-xxsm-xsm {
+  .main {
+    padding: 80px 15px 15px 15px;
+  }
+}
+// media 375px
+@mixin main-xxxsm-xxsm {
+  .main {
+    padding: 75px 15px 15px 15px;
+  }
+}

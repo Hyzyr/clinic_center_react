@@ -4,27 +4,33 @@ import DatePicker from "react-datepicker";
 export default function CalendarPopup({ CustomButton }) {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(null);
+  const [active, setActive] = useState(false);
   const onChange = (dates) => {
     const [start, end] = dates;
     setStartDate(start);
     setEndDate(end);
   };
   return (
-    <DatePicker
-      selected={startDate}
-      onChange={onChange}
-      startDate={startDate}
-      endDate={endDate}
-      selectsRange
-      calendarContainer={MyContainer}
-      customInput={<CustomButton />}
-      renderCustomHeader={(headerProps) => (
-        <CalendarPopupHeader className="calendarPopup" {...headerProps} />
-      )}
-      renderDayContents={renderDayContents}
-    />
+    <div className={active ? "active" : ""}>
+      <DatePicker
+        selected={startDate}
+        onChange={onChange}
+        startDate={startDate}
+        endDate={endDate}
+        selectsRanges
+        onCalendarOpen={() => setActive(true)}
+        onCalendarClose={() => setActive(false)}
+        calendarContainer={MyContainer}
+        customInput={<CustomButton />}
+        renderCustomHeader={(headerProps) => (
+          <CalendarPopupHeader className="calendarPopup" {...headerProps} />
+        )}
+        renderDayContents={renderDayContents}
+      />
+    </div>
   );
 }
+
 const renderDayContents = (day, date) => {
   return <strong>{getDate(date)}</strong>;
 };
@@ -49,9 +55,7 @@ const months = [
 const getMonth = (date) => {
   return new Date(date).getMonth();
 };
-const getMonthName = (date) => {
-  return months[new Date(date).getMonth()];
-};
+
 const getYear = (date) => {
   return new Date(date).getFullYear();
 };
@@ -77,58 +81,6 @@ export const CalendarPopupHeader = ({
         <button onClick={increaseMonth} disabled={nextMonthButtonDisabled}>
           <span className="custIcon custIcon--next"></span>
         </button>
-      </div>
-    </div>
-  );
-};
-export const CalendarPopupWrapper = () => {
-  return (
-    <div className="calendarPopup">
-      <ul className="calendarPopup__weekdays">
-        <li>Mon</li>
-        <li>Tue</li>
-        <li>Wed</li>
-        <li>Thu</li>
-        <li>Fri</li>
-        <li>Sat</li>
-        <li>Sun</li>
-      </ul>
-      <div className="calendarPopup__days">
-        <CalendarPopupItem disabled={true} day={27} />
-        <CalendarPopupItem disabled={true} day={28} />
-        <CalendarPopupItem disabled={true} day={29} />
-        <CalendarPopupItem disabled={true} day={30} />
-        <CalendarPopupItem disabled={true} day={"01"} />
-        <CalendarPopupItem disabled={true} day={"02"} />
-        <CalendarPopupItem disabled={true} day={"03"} />
-        <CalendarPopupItem disabled={true} day={"04"} />
-        <CalendarPopupItem disabled={true} day={"05"} />
-        <CalendarPopupItem disabled={true} day={"06"} />
-        <CalendarPopupItem disabled={true} day={"07"} />
-        <CalendarPopupItem addClass=" " day={"08"} today />
-        <CalendarPopupItem addClass="" day={"09"} />
-        <CalendarPopupItem addClass="" day={10} />
-        <CalendarPopupItem addClass="start active" day={11} />
-        <CalendarPopupItem addClass="active" day={12} />
-        <CalendarPopupItem addClass="active" day={13} />
-        <CalendarPopupItem addClass="active" day={14} />
-        <CalendarPopupItem addClass="active" day={15} />
-        <CalendarPopupItem addClass="active" day={16} />
-        <CalendarPopupItem addClass="active" day={17} />
-        <CalendarPopupItem addClass="active" day={18} />
-        <CalendarPopupItem addClass="active" day={19} />
-        <CalendarPopupItem addClass="active" day={20} />
-        <CalendarPopupItem addClass="active" day={21} />
-        <CalendarPopupItem addClass="active" day={22} />
-        <CalendarPopupItem addClass="active" day={23} />
-        <CalendarPopupItem addClass="active" day={24} />
-        <CalendarPopupItem addClass="end active" day={25} />
-        <CalendarPopupItem addClass="" day={26} />
-        <CalendarPopupItem addClass="" day={27} />
-        <CalendarPopupItem addClass="" day={28} />
-        <CalendarPopupItem addClass="" day={29} />
-        <CalendarPopupItem addClass=" " day={30} />
-        <CalendarPopupItem addClass=" " day={"01"} />
       </div>
     </div>
   );

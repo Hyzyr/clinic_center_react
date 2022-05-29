@@ -106,6 +106,12 @@ input[type=date] {
   -webkit-appearance: none;
 }
 
+input[type=date]::-webkit-inner-spin-button,
+input[type=date]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 8px;
@@ -153,7 +159,6 @@ h3,
 h4,
 h5,
 h6 {
-  position: relative;
   font-weight: normal;
   margin: 0px;
   background: none;
@@ -4149,7 +4154,6 @@ li {
   font-size: inherit;
 }
 .appointments__body-filters > li {
-  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4167,6 +4171,13 @@ li {
   color: #081616;
   width: 20%;
   text-align: center;
+}
+.appointments__body-filters > li div.active {
+  position: relative;
+  z-index: 2;
+}
+.appointments__body-filters > li div.active .calendarPopup {
+  z-index: 23;
 }
 .appointments__body-filters > li.active {
   color: #755dab !important;

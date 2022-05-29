@@ -41,16 +41,53 @@ export default function Appointments() {
               status: "Upcoming",
             }}
           />
+          <AppointmentRow
+            data={{
+              docImage: "doc (1).png",
+              docName: "Brad Simmons",
+              docProf: "Expert at Disease",
+              reason: "Alergy",
+              issueDate: "21 July 2021",
+              bookingTime: "03:00 PM",
+              bookingDate: "21 July 2021",
+              status: "Upcoming",
+            }}
+          />
+          <AppointmentRow
+            data={{
+              docImage: "doc (1).png",
+              docName: "Brad Simmons",
+              docProf: "Expert at Disease",
+              reason: "Alergy",
+              issueDate: "21 July 2021",
+              bookingTime: "03:00 PM",
+              bookingDate: "21 July 2021",
+              status: "Upcoming",
+            }}
+          />
         </div>
       </div>
-      <div className="appointments">
+      <div className="appointments fadeInUp">
         <h4 className="appointments__title">Changed requests</h4>
         <div className="appointments__body">
           <ul className="appointments__body-filters">
             <li>{"Doctors"}</li>
             <li>{"Reason"}</li>
-            <li className="active">{"Date & Time"}</li>
-            <li>{"Status"}</li>
+            <li>
+              {"Date & Time"}
+              <CalendarPopup CustomButton={SortDayButton} />
+            </li>
+            <li>
+              {"Status"}
+              <div className="appointments__body-filters-buttons">
+                <button>
+                  <span className="custIcon custIcon--up"></span>
+                </button>
+                <button>
+                  <span className="custIcon custIcon--down"></span>
+                </button>
+              </div>
+            </li>
             <li></li>
           </ul>
           <AppointmentRow

@@ -2833,6 +2833,9 @@ li {
   border-radius: 5px;
   background: #f8f9fc;
 }
+.booking__title-label.wide {
+  max-width: 490px;
+}
 .booking__title-label strong {
   color: #17282f;
   font-size: 18px;

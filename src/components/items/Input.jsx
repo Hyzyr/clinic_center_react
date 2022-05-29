@@ -29,7 +29,6 @@ export default function Input({
 
   const onFocus = () => {
     if (type === "number" && val === defaultValue) {
-      console.log("type numer", input.current);
       input.current.select();
     }
     setErrorState(false);

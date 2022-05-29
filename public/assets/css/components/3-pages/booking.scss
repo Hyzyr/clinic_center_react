@@ -150,7 +150,9 @@
       border: 1px solid $white-2;
       border-radius: 5px;
       background: $white-1;
-
+      &.wide {
+        max-width: 490px;
+      }
       strong {
         color: $black-01;
         font-size: 18px;

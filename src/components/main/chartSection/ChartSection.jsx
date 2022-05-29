@@ -24,7 +24,7 @@ export default function ChartSection() {
 
   return (
     <>
-      <section className="welcome">
+      <section className="welcome fadeInUp">
         <div className="welcome__row">
           <div className="card card--main">
             <div className="card__title">Hello test Acc,</div>
@@ -68,7 +68,7 @@ export default function ChartSection() {
           </div>
         </div>
       </section>
-      <section className="tabs">
+      <section className="tabs fadeInUp">
         <div className="tabs__buttons">
           <div className="tabs__buttons-inner">
             <button

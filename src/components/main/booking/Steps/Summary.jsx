@@ -3,11 +3,18 @@ import React from "react";
 import Input from "components/items/Input";
 import Check from "components/items/Check";
 
-export default function Summary() {
+export default function Summary(props) {
+  const back = () => {
+    props.back();
+  };
+  const next = () => {
+    props.setStep(props.nextStep);
+  };
+
   return (
     <>
       <div className="bookingSummary">
-        <button type="button" className="booking__back">
+        <button type="button" className="booking__back" onClick={back}>
           <span className="custIcon custIcon--back"></span>
         </button>
         <div className="bookingSummary__title">
@@ -157,7 +164,9 @@ export default function Summary() {
           <div className="bookingSummary__column">
             <div className="bookingSummary__buttons">
               <button className="button button--secondary">Reset</button>
-              <button className="button button--main">Continue</button>
+              <button className="button button--main" onClick={next}>
+                Continue
+              </button>
             </div>
           </div>
         </div>

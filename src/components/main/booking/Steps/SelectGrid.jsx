@@ -5,9 +5,12 @@ const imgPath =
   process.env.PUBLIC_URL + "/assets/images/illustrations/medical/";
 
 export default function SelectGrid(props) {
+  const back = () => {
+    props.back();
+  };
   return (
     <div className={`booking ${props.frameStyle ?? ""}`}>
-      <button type="button" className="booking__back">
+      <button type="button" className="booking__back" onClick={back}>
         <span className="custIcon custIcon--back"></span>
       </button>
       <div className="booking__title">
@@ -18,7 +21,7 @@ export default function SelectGrid(props) {
           <div className="booking__title-text">{props.title}</div>
         )}
         {props.label && (
-          <div className="booking__title-label">
+          <div className={`booking__title-label ${props.label?.style ?? ""}`}>
             <div className="booking__title-label-ico">
               <img src={imgPath + props.label?.ico} alt="ico" />
             </div>

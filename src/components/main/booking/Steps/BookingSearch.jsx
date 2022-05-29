@@ -5,12 +5,19 @@ import * as SVG from "components/items/SVG";
 
 const userFolder = process.env.PUBLIC_URL + "/assets/images/users/";
 
-export default function BookingSearch() {
+export default function BookingSearch(props) {
+  const back = () => {
+    props.back();
+  };
+  const next = () => {
+    props.setStep(props.nextStep);
+  };
+
   return (
     <>
       <div className="booking__search">
         <div className="booking__search-bar">
-          <button type="button" className="booking__back">
+          <button type="button" className="booking__back" onClick={back}>
             <span className="custIcon custIcon--back"></span>
           </button>
 
@@ -40,6 +47,7 @@ export default function BookingSearch() {
               location: "Ontario",
               patients: "4",
             }}
+            onClick={next}
           />
           <BookingCard
             user={{
@@ -50,6 +58,7 @@ export default function BookingSearch() {
               location: "Ontario",
               patients: "4",
             }}
+            onClick={next}
           />
           <BookingCard
             user={{
@@ -60,6 +69,7 @@ export default function BookingSearch() {
               location: "Ontario",
               patients: "4",
             }}
+            onClick={next}
           />
           <BookingCard
             user={{
@@ -70,6 +80,7 @@ export default function BookingSearch() {
               location: "Ontario",
               patients: "4",
             }}
+            onClick={next}
           />
           <BookingCard
             user={{
@@ -80,6 +91,7 @@ export default function BookingSearch() {
               location: "Ontario",
               patients: "4",
             }}
+            onClick={next}
           />
           <BookingCard
             user={{
@@ -90,6 +102,7 @@ export default function BookingSearch() {
               location: "Ontario",
               patients: "4",
             }}
+            onClick={next}
           />
         </div>
       </div>
@@ -97,7 +110,7 @@ export default function BookingSearch() {
   );
 }
 
-const BookingCard = ({ user }) => {
+const BookingCard = ({ user, onClick = () => {} }) => {
   return (
     <div className="booking__card">
       <div className="booking__card-image">
@@ -131,7 +144,9 @@ const BookingCard = ({ user }) => {
         </div>
       </div>
       <div className="booking__button">
-        <button className="button button--main">Book Now</button>
+        <button className="button button--main" onClick={onClick}>
+          Book Now
+        </button>
       </div>
     </div>
   );

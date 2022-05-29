@@ -1,7 +1,7 @@
 import React from "react";
 import * as SVG from "components/items/SVG";
 
-export default function Family() {
+export default function Family({ choosseFunc, closeFunc }) {
   return (
     <div className="tabs__body tabs__body--membership">
       <div className="membership__container">
@@ -27,7 +27,9 @@ export default function Family() {
           </li>
         </ul>
         <div className="membership__tabs-button">
-          <button className="button button--main">Choose</button>
+          <button className="button button--main" onClick={choosseFunc}>
+            Choose
+          </button>
         </div>
       </div>
     </div>

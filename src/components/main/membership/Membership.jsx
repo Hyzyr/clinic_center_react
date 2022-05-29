@@ -10,13 +10,29 @@ const imgPath =
   process.env.PUBLIC_URL + "/assets/images/illustrations/medical/";
 export default function Membership() {
   const [tab, setTab] = useState("Individual");
+  const [form, setForm] = useState(null);
   const checkClass = (tabName) => (tab === tabName ? "active" : "");
   const swapTab = (tabName) => {
     setTab(tabName);
   };
+  const setFormPayment = () => {
+    setForm("FormPayment");
+  };
+  const setHouseholdForm = () => {
+    setForm("HouseholdForm");
+  };
+  const disableForm = () => setForm(null);
 
+  if (form !== null)
+    return (
+      // key="form"
+      <div className="membership fadeInUp">
+        {fomr === "FormPayment" && <HouseholdForm />}
+        {fomr === "HouseholdForm" && <FormPayment />}
+      </div>
+    );
   return (
-    <div className="membership">
+    <div className="membership fadeInUp">
       <div className="membership__tabs ">
         <div className="tabs">
           <div className="tabs__buttons">
@@ -35,12 +51,14 @@ export default function Membership() {
               </button>
             </div>
           </div>
-          {tab === "Individual" && <Individual />}
-          {tab === "Family" && <Family />}
+          {tab === "Individual" && (
+            <Individual choosseFunc={setFormPayment} closeFunc={disableForm} />
+          )}
+          {tab === "Family" && (
+            <Family choosseFunc={setHouseholdForm} closeFunc={disableForm} />
+          )}
         </div>
       </div>
-      {/* <HouseholdForm /> */}
-      {/* <FormPayment /> */}
     </div>
   );
 }

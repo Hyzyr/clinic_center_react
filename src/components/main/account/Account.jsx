@@ -10,7 +10,7 @@ export default function Account() {
   };
 
   return (
-    <div className="account">
+    <div className="account fadeInUp">
       <div className="account__tabs tabs">
         <div className="tabs__buttons">
           <div className="tabs__buttons-inner">

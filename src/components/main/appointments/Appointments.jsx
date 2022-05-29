@@ -6,7 +6,7 @@ export default function Appointments() {
   // return <AppointmentEmpty />;
   return (
     <>
-      <div className="appointments">
+      <div className="appointments fadeInUp">
         <h4 className="appointments__title">Upcoming Appointments</h4>
         <div className="appointments__body">
           <ul className="appointments__body-filters">

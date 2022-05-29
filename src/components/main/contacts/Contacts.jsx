@@ -9,7 +9,7 @@ export default function Contacts() {
   const icoPath = process.env.PUBLIC_URL + "/assets/images/logo.png";
 
   return (
-    <div className="contacts">
+    <div className="contacts fadeInUp">
       <div className="contacts__title ">
         <div className="contacts__title-ico">
           <img src={icoPath} alt="logo" />

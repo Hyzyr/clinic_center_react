@@ -27,43 +27,107 @@ const testList = [
   {
     text: "At Home ECG Testing",
     img: "029-medical-appointment.svg",
-    nextStep: "",
+    nextStep: "confirmECG",
   },
   {
     text: "At Home IM/SUBQ Injections",
     img: "010-syringe.svg",
-    nextStep: "",
+    nextStep: "confirmInjections",
   },
   {
     text: "At Home Wellness Visits",
     img: "025-doctor.svg",
-    nextStep: "",
+    nextStep: "select-home",
   },
   {
     text: "IV Therapy & Hydration",
     img: "intravenous-saline-drip.svg",
-    nextStep: "",
+    nextStep: "select-hydration",
+  },
+];
+const hydrationList = [
+  {
+    text: "REHYDRATION THERAPY",
+    img: "drops.svg",
+    nextStep: "confirmTherapy",
+  },
+  {
+    text: "HANGOVER THERAPY",
+    img: "headache.svg",
+    nextStep: "confirmTherapy",
+  },
+  {
+    text: "FOOD POISONING RELIEF",
+    img: "toxic-apple.svg",
+    nextStep: "confirmTherapy",
+  },
+  {
+    text: "MULTI 12 COCKTAIL",
+    img: "coctail.svg",
+    nextStep: "confirmTherapy",
+  },
+  {
+    text: "MYER’S COCKTAIL",
+    img: "coctail2.svg",
+    nextStep: "confirmTherapy",
+  },
+  {
+    text: "FLU RELIEF",
+    img: "sore-throat.svg",
+    nextStep: "confirmTherapy",
+  },
+];
+const homeList = [
+  {
+    text: "Covid-19 Assessment",
+    img: "covid.svg",
+    nextStep: "search",
+  },
+  {
+    text: "Sinus, Cough & Allergy",
+    img: "sore-throat.svg",
+    nextStep: "search",
+  },
+  {
+    text: "Eye & Ear",
+    img: "eye-ear.svg",
+    nextStep: "search",
+  },
+  {
+    text: "Men & Women's Health",
+    img: "parents.svg",
+    nextStep: "search",
+  },
+  {
+    text: "Kids Health",
+    img: "baby-boy.svg",
+    nextStep: "search",
+  },
+  {
+    text: "Chornic & Preventative",
+    img: "stethoscope.svg",
+    nextStep: "search",
   },
 ];
 const covidList = [
   {
     text: "URGENT PCR < 6 HOURS: ",
     subtext: "$ 249.99 + HST",
-    img: "008-test-results.svg",
+    img: "clock-pill.svg",
     nextStep: "confirmCall",
   },
   {
     text: "PCR TESTING:",
     subtext: "$134.99 + HST",
-    img: "007-test-tubes.svg",
-    nextStep: "",
+    img: "tube.svg",
+    nextStep: "confirmCall",
   },
   {
     text: "ANTIGEN TESTING: ",
     subtext: "$39.99 to $59.99 + HST ",
     small: "(US, EUROPE & CARIBBEAN ONLY)",
-    img: "029-medical-appointment.svg",
-    nextStep: "",
+    img: "quick-test.svg",
+    nextStep: "confirmCall",
   },
 ];
 
@@ -79,9 +143,13 @@ const testDateList = [
 ];
 export default function Booking() {
   const [prevstep, setPrevstep] = useState("pickdate");
-  const [step, setStep] = useState("switchhome");
+  const [step, setCurrentStep] = useState("switchhome");
   const back = () => {
     setStep(prevstep);
+  };
+  const setStep = (newstep) => {
+    setPrevstep(step);
+    setCurrentStep(newstep);
   };
   const commonProps = {
     back,
@@ -89,17 +157,22 @@ export default function Booking() {
     setStep,
   };
 
-  useEffect(() => {
-    setPrevstep(step);
-  }, [step]);
-
-  // return <CalendarBig />;
+  // return <BookingSearch />;
   // return <Summary />;
   return (
     <>
       {step === "switchhome" && <SwitchHome {...commonProps} />}
+      {step === "summary" && (
+        <Summary {...commonProps} nextStep={"formpayment"} />
+      )}
+      {step === "search" && (
+        <BookingSearch {...commonProps} nextStep={"calendar"} />
+      )}
       {step === "addressform" && (
         <FormAddress {...commonProps} nextStep={"select-rhyno"} />
+      )}
+      {step === "addressform2" && (
+        <FormAddress {...commonProps} nextStep={"search"} />
       )}
       {step === "householdform" && (
         <FormHousehold {...commonProps} nextStep={"calendar"} />
@@ -113,18 +186,43 @@ export default function Booking() {
         />
       )}
       {step === "formpayment-wide" && (
-        <FormPayment {...commonProps} nextStep={"successs"} frameStyle={""} />
+        <FormPayment
+          {...commonProps}
+          nextStep={"successs"}
+          frameStyle={""}
+          check=" John Wick consent(s) to the testing samples being taken."
+        />
       )}
       {step === "filedrop" && <FileDrop {...commonProps} />}
       {step === "picktime" && (
-        <PickTime
-          {...commonProps}
-          list={testDateList}
-          nextStep={"formpayment-wide"}
-        />
+        <PickTime {...commonProps} list={testDateList} nextStep={"summary"} />
       )}
       {step === "calendar" && (
         <CalendarBig {...commonProps} nextStep={"picktime"} />
+      )}
+      {step === "select-home" && (
+        <SelectGrid
+          {...commonProps}
+          list={homeList}
+          // listStyle={"secondary"}
+          label={{
+            style: "wide",
+            ico: "025-doctor.svg",
+            text: "Select the reason for at home assessment",
+          }}
+        />
+      )}
+      {step === "select-hydration" && (
+        <SelectGrid
+          {...commonProps}
+          list={hydrationList}
+          // listStyle={"secondary"}
+          label={{
+            style: "wide",
+            ico: "intravenous-saline-drip.svg",
+            text: "Select the reason for IV Therapy & Hydration",
+          }}
+        />
       )}
       {step === "select-rhyno" && (
         <SelectGrid
@@ -147,6 +245,54 @@ export default function Booking() {
       )}
 
       {/*  confirm boxes are here  */}
+      {step === "confirmTherapy" && (
+        <ConfirmBox
+          {...commonProps}
+          framseStyle="booking--wide"
+          label={{
+            ico: "010-syringe.svg",
+            text: "At Home IM/SUBQ Injections",
+          }}
+          para={
+            "Have you seen a RhynoCare provider provider for consultation regarding this?"
+          }
+          buttonText={["NO", "YES"]}
+          nextStep={"search"}
+          backStep={"confirmProvider"}
+        />
+      )}
+      {step === "confirmInjections" && (
+        <ConfirmBox
+          {...commonProps}
+          framseStyle="booking--wide"
+          label={{
+            ico: "010-syringe.svg",
+            text: "At Home IM/SUBQ Injections",
+          }}
+          para={
+            "Do you have a referral/requisition from a provider for this service?"
+          }
+          buttonText={["Cancel", "OK"]}
+          nextStep={"calendar"}
+          backStep={"confirmProvider"}
+        />
+      )}
+      {step === "confirmECG" && (
+        <ConfirmBox
+          {...commonProps}
+          framseStyle="booking--wide"
+          label={{
+            ico: "029-medical-appointment.svg",
+            text: "At Home ECG Testing",
+          }}
+          para={
+            "Do you have a referral/requisition from a provider for this service?"
+          }
+          buttonText={["Cancel", "OK"]}
+          nextStep={"calendar"}
+          backStep={"confirmProvider"}
+        />
+      )}
       {step === "confirmBlood&Urine" && (
         <ConfirmBox
           {...commonProps}
@@ -160,6 +306,18 @@ export default function Booking() {
           }
           buttonText={["Cancel", "OK"]}
           nextStep={"calendar"}
+          backStep={"confirmProvider"}
+        />
+      )}
+      {step === "confirmProvider" && (
+        <ConfirmBox
+          {...commonProps}
+          para={
+            "Please book an appointment with a provider for the RHYNO GO service assessment."
+          }
+          text={"At Home COVID-19 Testing"}
+          nextStep={"search"}
+          buttonText={["Back", "Continue"]}
         />
       )}
       {step === "confirmCall" && (
@@ -171,6 +329,7 @@ export default function Booking() {
           nextStep={"householdform"}
         />
       )}
+
       {step === "confirmbox" && (
         <ConfirmBox
           {...commonProps}
@@ -280,9 +439,13 @@ const FormHousehold = (props) => {
 };
 
 const SwitchHome = (props) => {
+  const back = () => {
+    props.back();
+  };
+
   return (
     <div className="booking">
-      <button type="button" className="booking__close">
+      <button type="button" className="booking__close" onClick={back}>
         <span className="custIcon custIcon--error"></span>
       </button>
       <div className="booking__title">
@@ -299,7 +462,10 @@ const SwitchHome = (props) => {
           {SVG.home}
           At home testing Service
         </button>
-        <button className="booking__switch-button">
+        <button
+          className="booking__switch-button"
+          onClick={() => props.setStep("switchfuture")}
+        >
           {SVG.devices}
           See a Provider Virtually
         </button>
@@ -309,9 +475,13 @@ const SwitchHome = (props) => {
 };
 
 const SwitchFuture = (props) => {
+  const back = () => {
+    props.back();
+  };
+
   return (
     <div className="booking">
-      <button type="button" className="booking__close">
+      <button type="button" className="booking__close" onClick={back}>
         <span className="custIcon custIcon--error"></span>
       </button>
       <div className="booking__title">
@@ -325,7 +495,10 @@ const SwitchFuture = (props) => {
           {SVG.sort}
           Virtual Queue
         </button>
-        <button className="booking__switch-button">
+        <button
+          className="booking__switch-button"
+          onClick={() => props.setStep("addressform2")}
+        >
           {SVG.schedule}
           Future
         </button>
@@ -427,12 +600,12 @@ const FormPayment = (props) => {
         <div className="booking__title-ico">
           <img src={icoPath} alt="logo" />
         </div>
-        <div className="booking__title-check">
-          <Check id="sign_check" />
-          <label htmlFor="sign_check">
-            John Wick consent(s) to the testing samples being taken.
-          </label>
-        </div>
+        {props.check && (
+          <div className="booking__title-check">
+            <Check id="sign_check" />
+            <label htmlFor="sign_check">{props.check}</label>
+          </div>
+        )}
         <div className="booking__title-text">Make Payment</div>
       </div>
       <div className="booking__form form form--payment">
@@ -539,11 +712,18 @@ const ConfirmBox = (props) => {
     props.setStep(props.nextStep);
   };
   const reject = () => {
-    props.setStep(props.prevstep);
+    if (props.backStep) {
+      props.setStep(props.backStep);
+    } else props.setStep(props.prevstep);
+  };
+  const back = () => {
+    console.log("ConfirmBox back");
+    if (props.back) props.back();
+    else props.setStep(props.prevstep);
   };
   return (
     <div className={`booking ${props.framseStyle ?? ""}`}>
-      <button type="button" className="booking__back">
+      <button type="button" className="booking__back" onClick={back}>
         <span className="custIcon custIcon--back"></span>
       </button>
       <div className="booking__title">

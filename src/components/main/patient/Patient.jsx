@@ -9,7 +9,7 @@ export default function Patient() {
   const icoPath = process.env.PUBLIC_URL + "/assets/images/logo.png";
 
   return (
-    <div className="patient">
+    <div className="patient fadeInUp">
       <div className="patient__title">
         <div className="patient__title-ico">
           <img src={icoPath} alt="logo" />

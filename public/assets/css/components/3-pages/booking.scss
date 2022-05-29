@@ -740,6 +740,37 @@
         text-align: right;
       }
     }
+    &-user {
+      display: flex;
+      margin-bottom: 25px;
+
+      .profilePic {
+        border-radius: 50%;
+        width: 47px;
+        height: 47px;
+        margin-right: 16px;
+      }
+      &-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        font-family: $font-main;
+        strong {
+          color: $black;
+          font-style: normal;
+          font-weight: 700;
+          font-size: 15px;
+          line-height: 1;
+        }
+        span {
+          color: $gray;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 12px;
+          line-height: 1;
+        }
+      }
+    }
   }
   &__buttons {
     width: 100%;

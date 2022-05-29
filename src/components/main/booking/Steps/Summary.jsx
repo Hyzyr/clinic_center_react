@@ -2,6 +2,7 @@ import * as SVG from "components/items/SVG";
 import React from "react";
 import Input from "components/items/Input";
 import Check from "components/items/Check";
+import ProfilePic from "components/items/ProfilePic";
 
 export default function Summary(props) {
   const back = () => {
@@ -10,7 +11,7 @@ export default function Summary(props) {
   const next = () => {
     props.setStep(props.nextStep);
   };
-
+  const avatarPath = process.env.PUBLIC_URL + "assets/images/avatars/user.png";
   return (
     <>
       <div className="bookingSummary">
@@ -54,6 +55,13 @@ export default function Summary(props) {
               <div className="bookingSummary__content-title">
                 <h5>Provider Information</h5>
                 <button>{SVG.pen}</button>
+              </div>
+              <div className="bookingSummary__content-user">
+                <ProfilePic src={avatarPath} alt="avatar" />
+                <div className="bookingSummary__content-user-info">
+                  <strong>John Wick</strong>
+                  <span>Nurse Practitioner</span>
+                </div>
               </div>
               <div className="bookingSummary__content-info">
                 <div className="bookingSummary__content-info-title">

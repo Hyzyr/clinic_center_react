@@ -144,7 +144,7 @@ const testDateList = [
 ];
 export default function Booking() {
   const [prevstep, setPrevstep] = useState("switchhome");
-  const [step, setCurrentStep] = useState("switchhome");
+  const [step, setCurrentStep] = useState("summary");
   const back = () => {
     setStep(prevstep);
   };

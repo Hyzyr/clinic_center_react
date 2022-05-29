@@ -23,12 +23,23 @@ export default function Membership() {
   };
   const disableForm = () => setForm(null);
 
+  const onFormPaymentSubmit = () => {
+    disableForm();
+  };
+  const onHouseholdFormSubmit = () => {
+    setFormPayment();
+  };
+
   if (form !== null)
     return (
       // key="form"
       <div className="membership fadeInUp">
-        {fomr === "FormPayment" && <HouseholdForm />}
-        {fomr === "HouseholdForm" && <FormPayment />}
+        {form === "FormPayment" && (
+          <FormPayment onSubmit={onFormPaymentSubmit} close={disableForms} />
+        )}
+        {form === "HouseholdForm" && (
+          <HouseholdForm onSubmit={onHouseholdFormSubmit} close={disableForm} />
+        )}
       </div>
     );
   return (
@@ -51,22 +62,18 @@ export default function Membership() {
               </button>
             </div>
           </div>
-          {tab === "Individual" && (
-            <Individual choosseFunc={setFormPayment} closeFunc={disableForm} />
-          )}
-          {tab === "Family" && (
-            <Family choosseFunc={setHouseholdForm} closeFunc={disableForm} />
-          )}
+          {tab === "Individual" && <Individual choosseFunc={setFormPayment} />}
+          {tab === "Family" && <Family choosseFunc={setHouseholdForm} />}
         </div>
       </div>
     </div>
   );
 }
 
-const FormPayment = () => {
+const FormPayment = ({ onSubmit, close }) => {
   return (
     <div className="booking booking--small">
-      <button type="button" className="booking__close">
+      <button type="button" className="booking__close" onClick={close}>
         <span className="custIcon custIcon--error"></span>
       </button>
       <div className="booking__title ">
@@ -98,7 +105,9 @@ const FormPayment = () => {
         </div>
 
         <div className="form__buttons">
-          <button className="button button--main">Book Now CAD $50.00</button>
+          <button className="button button--main" onClick={onSubmit}>
+            Book Now CAD $50.00
+          </button>
         </div>
 
         <div className="form__divider">
@@ -114,17 +123,19 @@ const FormPayment = () => {
         </div>
 
         <div className="form__buttons">
-          <button className="button button--main">Submit</button>
+          <button className="button button--main" onClick={onSubmit}>
+            Submit
+          </button>
         </div>
       </div>
     </div>
   );
 };
 
-const HouseholdForm = () => {
+const HouseholdForm = ({ onSubmit, close }) => {
   return (
     <div className="booking booking--membership">
-      <button type="button" className="booking__close">
+      <button type="button" className="booking__close" onClick={close}>
         <span className="custIcon custIcon--error"></span>
       </button>
       <div className="booking__title ">
@@ -178,7 +189,9 @@ const HouseholdForm = () => {
 
           <div className="form__buttons">
             <button className="button button--secondary">Reset</button>
-            <button className="button button--main">Confirm Detalis</button>
+            <button className="button button--main" onClick={onSubmit}>
+              Confirm Detalis
+            </button>
           </div>
         </div>
       </div>

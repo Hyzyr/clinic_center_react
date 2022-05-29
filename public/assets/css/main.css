@@ -107,7 +107,9 @@ input[type=date] {
 }
 
 input[type=date]::-webkit-inner-spin-button,
-input[type=date]::-webkit-calendar-picker-indicator {
+input[type=date]::-webkit-calendar-picker-indicator,
+input[type=month]::-webkit-inner-spin-button,
+input[type=month]::-webkit-calendar-picker-indicator {
   display: none;
   -webkit-appearance: none;
 }
@@ -1430,6 +1432,64 @@ li {
           animation-timing-function: cubic-bezier;
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
+}
+
+.successBox {
+  background: #fff;
+  border: 1px solid rgba(123, 138, 138, 0.25);
+  -webkit-box-shadow: 6px 0px 12px rgba(26, 28, 29, 0.05), -6px 6px 12px rgba(26, 28, 29, 0.05);
+          box-shadow: 6px 0px 12px rgba(26, 28, 29, 0.05), -6px 6px 12px rgba(26, 28, 29, 0.05);
+  border-radius: 6px;
+  margin: 60px auto;
+  padding: 30px 30px 40px 30px;
+  max-width: 650px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.successBox__ico {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 50px;
+  width: 50px;
+  margin-bottom: 15px;
+}
+.successBox__ico img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  -o-object-fit: cover;
+}
+.successBox__para {
+  text-align: center;
+  width: 100%;
+  font-family: "DM Sans", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 36px;
+  text-align: center;
+  max-width: 310px;
+  color: #081616;
+}
+.successBox__button {
+  margin-top: 30px;
+}
+.successBox__button .button {
+  font-family: #755dab;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
+  padding: 12px 30px;
 }
 
 .card {

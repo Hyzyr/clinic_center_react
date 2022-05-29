@@ -9,6 +9,7 @@ import CalendarBig from "../CalendarBig";
 import SelectGrid from "./Steps/SelectGrid";
 import Summary from "./Steps/Summary";
 import Check from "components/items/Check";
+import { Link } from "react-router-dom";
 
 const icoPath = process.env.PUBLIC_URL + "/assets/images/logo.png";
 const imgPath =
@@ -142,7 +143,7 @@ const testDateList = [
   "07.00 AM - 10.00 AM",
 ];
 export default function Booking() {
-  const [prevstep, setPrevstep] = useState("pickdate");
+  const [prevstep, setPrevstep] = useState("switchhome");
   const [step, setCurrentStep] = useState("switchhome");
   const back = () => {
     setStep(prevstep);
@@ -181,14 +182,14 @@ export default function Booking() {
       {step === "formpayment" && (
         <FormPayment
           {...commonProps}
-          nextStep={"successs"}
+          nextStep={"success"}
           frameStyle={"booking--small"}
         />
       )}
       {step === "formpayment-wide" && (
         <FormPayment
           {...commonProps}
-          nextStep={"successs"}
+          nextStep={"success"}
           frameStyle={""}
           check=" John Wick consent(s) to the testing samples being taken."
         />
@@ -346,10 +347,28 @@ export default function Booking() {
           nextStep={""}
         />
       )}
-      {step === "successs" && "success"}
+      {step === "success" && <Success />}
     </>
   );
 }
+
+const Success = (props) => {
+  return (
+    <div className="successBox">
+      <div className="successBox__ico">
+        <img src={icoPath} alt="logo" />
+      </div>
+      <div className="successBox__para">
+        Booking Successful Wed, Oct 8, 2022, 10.00 AM - 11.00 AM
+      </div>
+      <div className="successBox__button">
+        <Link to={"/appointments"} className="button button--main">
+          See my Appointments!
+        </Link>
+      </div>
+    </div>
+  );
+};
 
 const FormHousehold = (props) => {
   const back = () => {

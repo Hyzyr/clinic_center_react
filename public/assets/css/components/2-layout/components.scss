@@ -1011,3 +1011,55 @@
     }
   }
 }
+
+.successBox {
+  background: $white;
+  border: 1px solid rgba($color: $gray, $alpha: 0.25);
+  box-shadow: 6px 0px 12px rgba(26, 28, 29, 0.05),
+    -6px 6px 12px rgba(26, 28, 29, 0.05);
+  border-radius: 6px;
+  margin: 60px auto;
+  padding: 30px 30px 40px 30px;
+  max-width: 650px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__ico {
+    display: flex;
+    height: 50px;
+    width: 50px;
+    margin-bottom: 15px;
+
+    img {
+      @include fullImage;
+    }
+  }
+  &__para {
+    text-align: center;
+    width: 100%;
+    font-family: $font-main;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 36px;
+    text-align: center;
+    max-width: 310px;
+
+    color: $black-0;
+  }
+  &__button {
+    margin-top: 30px;
+
+    .button {
+      font-family: $main;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 1;
+
+      padding: 12px 30px;
+    }
+  }
+}

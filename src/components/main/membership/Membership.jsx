@@ -4,6 +4,7 @@ import Family from "./tabs/Family";
 import Input from "components/items/Input";
 import InlineInput from "components/items/InlineInput";
 import * as SVG from "components/items/SVG";
+import { Link } from "react-router-dom";
 
 const icoPath = process.env.PUBLIC_URL + "/assets/images/logo.png";
 const imgPath =
@@ -24,7 +25,7 @@ export default function Membership() {
   const disableForm = () => setForm(null);
 
   const onFormPaymentSubmit = () => {
-    disableForm();
+    setForm("success");
   };
   const onHouseholdFormSubmit = () => {
     setFormPayment();
@@ -40,6 +41,7 @@ export default function Membership() {
         {form === "HouseholdForm" && (
           <HouseholdForm onSubmit={onHouseholdFormSubmit} close={disableForm} />
         )}
+        {form === "success" && <Success close={disableForm} />}
       </div>
     );
   return (
@@ -194,6 +196,31 @@ const HouseholdForm = ({ onSubmit, close }) => {
             </button>
           </div>
         </div>
+      </div>
+    </div>
+  );
+};
+
+const Success = (props) => {
+  const close = () => {
+    if (props.close) props.close();
+  };
+  return (
+    <div className="successBox">
+      <div className="successBox__ico">
+        <img src={icoPath} alt="logo" />
+      </div>
+      <div className="successBox__para">
+        Membership Purchase Successful Family Subscription (Cad 39.99 / month)
+      </div>
+      <div className="successBox__button">
+        <Link
+          to={"/membership"}
+          className="button button--main"
+          onClick={close}
+        >
+          See my Membership!
+        </Link>
       </div>
     </div>
   );

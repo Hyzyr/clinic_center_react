@@ -1434,6 +1434,10 @@ li {
           animation-iteration-count: infinite;
 }
 
+.nobr {
+  white-space: nowrap;
+}
+
 .successBox {
   background: #fff;
   border: 1px solid rgba(123, 138, 138, 0.25);
@@ -1453,6 +1457,9 @@ li {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+.successBox--membership .successBox__para {
+  max-width: 400px;
 }
 .successBox__ico {
   display: -webkit-box;

@@ -206,12 +206,13 @@ const Success = (props) => {
     if (props.close) props.close();
   };
   return (
-    <div className="successBox">
+    <div className="successBox successBox--membership">
       <div className="successBox__ico">
         <img src={icoPath} alt="logo" />
       </div>
-      <div className="successBox__para">
-        Membership Purchase Successful Family Subscription (Cad 39.99 / month)
+      <div className="successBox__para ">
+        Membership Purchase Successful Family Subscription &nbsp;
+        <span className="nobr">(Cad 39.99 / month)</span>
       </div>
       <div className="successBox__button">
         <Link

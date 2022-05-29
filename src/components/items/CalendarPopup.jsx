@@ -6,6 +6,7 @@ export default function CalendarPopup({ CustomButton }) {
   const [endDate, setEndDate] = useState(null);
   const [active, setActive] = useState(false);
   const onChange = (dates) => {
+    console.log("date changed ", dates);
     const [start, end] = dates;
     setStartDate(start);
     setEndDate(end);
@@ -17,7 +18,7 @@ export default function CalendarPopup({ CustomButton }) {
         onChange={onChange}
         startDate={startDate}
         endDate={endDate}
-        selectsRanges
+        selectsRange={true}
         onCalendarOpen={() => setActive(true)}
         onCalendarClose={() => setActive(false)}
         calendarContainer={MyContainer}
@@ -35,7 +36,6 @@ const renderDayContents = (day, date) => {
   return <strong>{getDate(date)}</strong>;
 };
 const MyContainer = (props) => {
-  console.log(props);
   return <div className="calendarPopup">{props.children}</div>;
 };
 const months = [

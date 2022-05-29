@@ -1,10 +1,11 @@
 import * as SVG from "components/items/SVG";
-import React from "react";
+import React, { useState } from "react";
 import Input from "components/items/Input";
 import Check from "components/items/Check";
 import ProfilePic from "components/items/ProfilePic";
 
 export default function Summary(props) {
+  const [card, setCard] = useState(false);
   const back = () => {
     props.back();
   };
@@ -147,37 +148,47 @@ export default function Summary(props) {
       </div>
       <div className="bookingSummary">
         <div className="bookingSummary__check">
-          <Check id="health-card" />
+          <Check id="health-card" onChange={(val) => setCard(val)} />
           <label htmlFor="health-card">
             {"I have a provincial health card"}
           </label>
         </div>
-        <div className="bookingSummary__row bookingSummary__row--custom">
-          <div className="bookingSummary__column">
-            <div className="form">
-              <div className="form__title">
-                {SVG.shieldHealth}
-                <span>Health Card</span>
-                <span className="sup">*</span>
+
+        {card ? (
+          <div className="bookingSummary__row  bookingSummary__row--custom">
+            <div className="bookingSummary__column">
+              <div className="form">
+                <div className="form__title">
+                  {SVG.shieldHealth}
+                  <span>Health Card</span>
+                  <span className="sup">*</span>
+                </div>
+                <Input type="text" placeholder="AB 123456789" />
+                <div className="form__title">
+                  {SVG.calendar}
+                  <span>Date of Expiry</span>
+                  <span className="sup">*</span>
+                </div>
+                <Input type="date" placeholder="AB 123456789" />
               </div>
-              <Input type="text" placeholder="AB 123456789" />
-              <div className="form__title">
-                {SVG.calendar}
-                <span>Date of Expiry</span>
-                <span className="sup">*</span>
+            </div>
+            <div className="bookingSummary__column">
+              <div className="bookingSummary__buttons">
+                <button className="button button--secondary">Reset</button>
+                <button className="button button--main" onClick={next}>
+                  Continue
+                </button>
               </div>
-              <Input type="date" placeholder="AB 123456789" />
             </div>
           </div>
-          <div className="bookingSummary__column">
-            <div className="bookingSummary__buttons">
-              <button className="button button--secondary">Reset</button>
-              <button className="button button--main" onClick={next}>
-                Continue
-              </button>
-            </div>
+        ) : (
+          <div className="bookingSummary__buttons">
+            <button className="button button--secondary">Reset</button>
+            <button className="button button--main" onClick={next}>
+              Continue
+            </button>
           </div>
-        </div>
+        )}
       </div>
     </>
   );

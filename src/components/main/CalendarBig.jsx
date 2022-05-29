@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import DatePicker from "react-datepicker";
 
 const CalendarBig = (props) => {
   const back = () => {
@@ -7,100 +8,153 @@ const CalendarBig = (props) => {
   const next = () => {
     props.setStep(props.nextStep);
   };
+  const onChange = (dates) => {
+    console.log(dates);
+    setTimeout(() => props.setStep(props.nextStep), 1000);
+  };
+
+  const getDates = (startDate, daysToAdd) => {
+    let aryDates = [];
+
+    for (var i = 0; i <= daysToAdd; i++) {
+      var currentDate = new Date();
+      currentDate.setDate(startDate.getDate() + i);
+      aryDates.push({
+        date: currentDate,
+        slots: i + 1,
+      });
+    }
+
+    return aryDates;
+  };
+  const daysWithSlot = getDates(new Date(), 7);
+
   return (
-    <div className="calendarInline">
-      <div className="calendarInline__header">
-        <div className="calendarInline__header-left">
-          <button onClick={back}>
-            <span className="custIcon custIcon--back"></span>
-          </button>
-          <span>Today: Wed, Oct 8, 2022</span>
-        </div>
-        <div className="calendarInline__header-title">
-          <button>
-            <span className="custIcon custIcon--back"></span>
-          </button>
-          <strong>October, 2022</strong>
-          <button>
-            <span className="custIcon custIcon--next"></span>
-          </button>
-        </div>
-        <div className="calendarInline__header-right">
-          <span>{"Choose from available dates & times"}</span>
-        </div>
+    <DatePicker
+      // selected={startDate}
+      onChange={onChange}
+      // startDate={startDate}
+      // endDate={endDate}
+      inline
+      calendarContainer={CalendarContainer}
+      renderCustomHeader={(headerProps) => (
+        <CalendarHeader
+          className="calendarPopup"
+          {...headerProps}
+          backFunc={back}
+        />
+      )}
+      renderDayContents={(day, date) => (
+        <CalendarDayContents
+          day={day}
+          date={date}
+          daysWithSlot={daysWithSlot}
+        />
+      )}
+    />
+  );
+};
+
+const months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
+// commmon functions
+const getMonth = (date) => {
+  return new Date(date).getMonth();
+};
+const getMonthFull = (date) => {
+  return months[new Date(date).getMonth()];
+};
+
+const getYear = (date) => {
+  return new Date(date).getFullYear();
+};
+const getDate = (date) => {
+  return new Date(date).getDate();
+};
+
+/// components
+const CalendarContainer = (props) => {
+  return <div className="calendarInline">{props.children}</div>;
+};
+const CalendarHeader = ({
+  date,
+  changeYear,
+  changeMonth,
+  decreaseMonth,
+  increaseMonth,
+  prevMonthButtonDisabled,
+  nextMonthButtonDisabled,
+  backFunc,
+}) => {
+  const back = () => backFunc();
+  const options = {
+    weekday: "short",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  return (
+    <div className="calendarInline__header">
+      <div className="calendarInline__header-left">
+        <button onClick={back}>
+          <span className="custIcon custIcon--back"></span>
+        </button>
+        {/* <span>{`Today: Wed, Oct 8, 2022 `}</span> */}
+        <span>{`Today: ${new Date().toLocaleDateString(
+          "en-US",
+          options
+        )}`}</span>
       </div>
-      <ul className="calendarInline__weekdays">
-        <li>Mon</li>
-        <li>Tue</li>
-        <li>Wed</li>
-        <li>Thu</li>
-        <li>Fri</li>
-        <li>Sat</li>
-        <li>Sun</li>
-      </ul>
-      <div className="calendarInline__days">
-        <CalendarBigItem onClick={next} disabled={true} day={27} />
-        <CalendarBigItem onClick={next} disabled={true} day={28} />
-        <CalendarBigItem onClick={next} disabled={true} day={29} />
-        <CalendarBigItem onClick={next} disabled={true} day={30} />
-        <CalendarBigItem onClick={next} disabled={true} day={"01"} />
-        <CalendarBigItem onClick={next} disabled={true} day={"02"} />
-        <CalendarBigItem onClick={next} disabled={true} day={"03"} />
-        <CalendarBigItem onClick={next} disabled={true} day={"04"} />
-        <CalendarBigItem onClick={next} disabled={true} day={"05"} />
-        <CalendarBigItem onClick={next} disabled={true} day={"06"} />
-        <CalendarBigItem onClick={next} disabled={true} day={"07"} />
-        <CalendarBigItem onClick={next} day={"08"} today slots={"08"} />
-        <CalendarBigItem onClick={next} day={"09"} />
-        <CalendarBigItem onClick={next} day={10} />
-        <CalendarBigItem onClick={next} day={11} />
-        <CalendarBigItem onClick={next} day={12} />
-        <CalendarBigItem onClick={next} day={13} slots={"12"} />
-        <CalendarBigItem onClick={next} day={14} />
-        <CalendarBigItem onClick={next} day={15} />
-        <CalendarBigItem onClick={next} day={16} slots={"04"} />
-        <CalendarBigItem onClick={next} day={17} />
-        <CalendarBigItem onClick={next} day={18} />
-        <CalendarBigItem onClick={next} day={19} />
-        <CalendarBigItem onClick={next} day={20} />
-        <CalendarBigItem onClick={next} day={21} />
-        <CalendarBigItem onClick={next} day={22} />
-        <CalendarBigItem onClick={next} day={23} />
-        <CalendarBigItem onClick={next} day={24} />
-        <CalendarBigItem onClick={next} day={25} />
-        <CalendarBigItem onClick={next} day={26} />
-        <CalendarBigItem onClick={next} day={27} />
-        <CalendarBigItem onClick={next} day={28} />
-        <CalendarBigItem onClick={next} day={29} />
-        <CalendarBigItem onClick={next} day={30} slots={"01"} />
-        <CalendarBigItem onClick={next} day={"01"} />
+      <div className="calendarInline__header-title">
+        <button onClick={decreaseMonth} disabled={prevMonthButtonDisabled}>
+          <span className="custIcon custIcon--back"></span>
+        </button>
+        <strong>
+          {getMonthFull(date)}, {getYear(date)}
+        </strong>
+        <button onClick={increaseMonth} disabled={nextMonthButtonDisabled}>
+          <span className="custIcon custIcon--next"></span>
+        </button>
+      </div>
+      <div className="calendarInline__header-right">
+        <span>{"Choose from available dates & times"}</span>
       </div>
     </div>
   );
 };
 
-const CalendarBigItem = ({
-  day,
-  slots = null,
-  disabled,
-  today,
-  onClick = () => {},
-}) => {
-  let addClass = "";
-  if (disabled) addClass += " disabled";
-  if (today) addClass += " today";
-  if (slots) addClass += " labeled";
-
+const CalendarDayContents = ({ day, date, daysWithSlot }) => {
+  const getTime = (given) => {
+    let givenDate = new Date(given);
+    givenDate.setHours(0, 0, 0, 0);
+    return givenDate.getTime();
+  };
+  let slots = daysWithSlot.find((item) => {
+    return getTime(item.date) === getTime(date);
+  });
   return (
-    <div className={`calendarInline__day`} onClick={onClick}>
+    <>
       <div className="calendarInline__day-space"></div>
-      <div className={`calendarInline__day-inner  ${addClass}`}>
-        <strong className="calendarInline__title">{day}</strong>
-        <span className="calendarInline__event">
-          {`${slots} slots available` ?? ""}
+      <div className={`calendarInline__day-inner ${slots ? "visible" : ""}`}>
+        <strong className="calendarInline__title">{getDate(date)}</strong>
+        <span className="calendarInline__event ">
+          {slots?.slots ? `${slots.slots} slots available` : ""}
         </span>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -138,9 +138,9 @@ const testDateList = [
   "11.00 AM - 12.00 PM",
   "01.00 PM - 02.00 PM",
   "03.00 PM - 04.00 PM",
-  "07.00 PM - 10.00 PM",
-  "07.00 AM - 10.00 AM",
-  "07.00 AM - 10.00 AM",
+  "07.00 PM - 08.00 AM",
+  "08.00 AM - 09.00 AM",
+  "09.00 AM - 10.00 AM",
 ];
 export default function Booking() {
   const [prevstep, setPrevstep] = useState("switchhome");
@@ -543,9 +543,12 @@ const FormAddress = (props) => {
     "Iqaluit",
     "Whitehorse",
   ];
+  const back = () => {
+    props.back();
+  };
   return (
     <div className="booking">
-      <button type="button" className="booking__close">
+      <button type="button" className="booking__close" onClick={back}>
         <span className="custIcon custIcon--error"></span>
       </button>
       <div className="booking__title ">
@@ -610,9 +613,12 @@ const FormPayment = (props) => {
   const submit = () => {
     props.setStep(props.nextStep);
   };
+  const back = () => {
+    props.back();
+  };
   return (
     <div className={`booking ${props.frameStyle ?? ""}`}>
-      <button type="button" className="booking__close">
+      <button type="button" className="booking__close" onClick={back}>
         <span className="custIcon custIcon--error"></span>
       </button>
       <div className="booking__title ">
@@ -654,10 +660,13 @@ const FormPayment = (props) => {
     </div>
   );
 };
-const FileDrop = () => {
+const FileDrop = (props) => {
+  const back = () => {
+    props.back();
+  };
   return (
     <div className="booking">
-      <button type="button" className="booking__close">
+      <button type="button" className="booking__close" onClick={back}>
         <span className="custIcon custIcon--error"></span>
       </button>
       <div className="booking__title ">
@@ -689,9 +698,12 @@ const PickTime = (props) => {
   const next = () => {
     props.setStep(props.nextStep);
   };
+  const back = () => {
+    props.back();
+  };
   return (
     <div className="booking booking--small">
-      <button type="button" className="booking__back" onClick={props.back}>
+      <button type="button" className="booking__back" onClick={back}>
         <span className="custIcon custIcon--back"></span>
       </button>
       <div className="booking__title booking__title--text">
@@ -733,12 +745,16 @@ const ConfirmBox = (props) => {
   const reject = () => {
     if (props.backStep) {
       props.setStep(props.backStep);
-    } else props.setStep(props.prevstep);
+    } else {
+      props.back();
+    }
   };
   const back = () => {
-    console.log("ConfirmBox back");
-    if (props.back) props.back();
-    else props.setStep(props.prevstep);
+    if (props.back) {
+      props.back();
+    } else {
+      props.setStep(props.prevstep);
+    }
   };
   return (
     <div className={`booking ${props.framseStyle ?? ""}`}>

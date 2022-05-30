@@ -29,18 +29,6 @@ export default function Appointments() {
             </li>
             <li></li>
           </ul>
-          {/* <AppointmentRow
-            data={{
-              docImage: "doc (1).png",
-              docName: "Brad Simmons",
-              docProf: "Expert at Disease",
-              reason: "Alergy",
-              issueDate: "21 July 2021",
-              bookingTime: "03:00 PM",
-              bookingDate: "21 July 2021",
-              status: "Upcoming",
-            }}
-          />
           <AppointmentRow
             data={{
               docImage: "doc (1).png",
@@ -64,7 +52,19 @@ export default function Appointments() {
               bookingDate: "21 July 2021",
               status: "Upcoming",
             }}
-          /> */}
+          />
+          <AppointmentRow
+            data={{
+              docImage: "doc (1).png",
+              docName: "Brad Simmons",
+              docProf: "Expert at Disease",
+              reason: "Alergy",
+              issueDate: "21 July 2021",
+              bookingTime: "03:00 PM",
+              bookingDate: "21 July 2021",
+              status: "Upcoming",
+            }}
+          />
         </div>
       </div>
       <div className="appointments fadeIn ">

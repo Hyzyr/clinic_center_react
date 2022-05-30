@@ -13,12 +13,12 @@
     border-radius: 18px;
     padding: 30px;
     margin-bottom: 50px;
-
     &-filters {
       display: flex;
       justify-content: space-between;
       padding: 0 40px;
       margin-bottom: 25px;
+      position: relative;
       &-buttons,
       &-dayButton {
         display: flex;
@@ -59,8 +59,8 @@
         div.active {
           position: relative;
           z-index: 2;
-          .calendarPopup{
-            z-index: 23;
+          .react-datepicker-popper {
+            z-index: 20;
           }
         }
         &.active {

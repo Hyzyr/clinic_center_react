@@ -3,6 +3,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap");
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 @-webkit-keyframes fadeInUp {
   from {
     opacity: 0;
@@ -54,6 +70,13 @@
 .fadeInUp {
   -webkit-animation: fadeInUp 0.2s ease-in-out;
           animation: fadeInUp 0.2s ease-in-out;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+}
+
+.fadeIn {
+  -webkit-animation: fadeIn 0.2s ease-in-out;
+          animation: fadeIn 0.2s ease-in-out;
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
 }
@@ -4241,6 +4264,7 @@ li {
           justify-content: space-between;
   padding: 0 40px;
   margin-bottom: 25px;
+  position: relative;
 }
 .appointments__body-filters-buttons, .appointments__body-filters-dayButton {
   display: -webkit-box;
@@ -4288,8 +4312,8 @@ li {
   position: relative;
   z-index: 2;
 }
-.appointments__body-filters > li div.active .calendarPopup {
-  z-index: 23;
+.appointments__body-filters > li div.active .react-datepicker-popper {
+  z-index: 20;
 }
 .appointments__body-filters > li.active {
   color: #755dab !important;
@@ -4780,6 +4804,15 @@ li {
   .sidebar--lg {
     width: 330px;
   }
+  .sidebar__inner-logo-ico {
+    max-width: 160px;
+  }
+  .sidebar__inner-logo-text {
+    max-width: 200px;
+  }
+  .sidebar__inner-link {
+    padding: 8px 25px;
+  }
   .sidebar__inner-help.lg .sidebar__inner-help-para {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -4797,6 +4830,12 @@ li {
   }
   .sidebar__inner-help.lg .sidebar__inner-help-para .link {
     margin-top: 5px;
+  }
+  .sidebar__inner-help-card {
+    padding: 15px 10px;
+  }
+  .sidebar__inner-help-card strong {
+    margin-bottom: 10px;
   }
 
   .welcome__row {

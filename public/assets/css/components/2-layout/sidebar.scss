@@ -221,6 +221,17 @@
       width: 330px;
     }
     &__inner {
+      &-logo {
+        &-ico {
+          max-width: 160px;
+        }
+        &-text {
+          max-width: 200px;
+        }
+      }
+      &-link {
+        padding: 8px 25px;
+      }
       &-help {
         &.lg {
           .sidebar__inner-help-para {
@@ -231,6 +242,12 @@
             .link {
               margin-top: 5px;
             }
+          }
+        }
+        &-card {
+          padding: 15px 10px;
+          strong {
+            margin-bottom: 10px;
           }
         }
       }

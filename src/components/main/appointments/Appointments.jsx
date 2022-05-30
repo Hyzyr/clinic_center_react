@@ -6,7 +6,7 @@ export default function Appointments() {
   // return <AppointmentEmpty />;
   return (
     <>
-      <div className="appointments fadeInUp">
+      <div className="appointments fadeIn">
         <h4 className="appointments__title">Upcoming Appointments</h4>
         <div className="appointments__body">
           <ul className="appointments__body-filters">
@@ -29,7 +29,7 @@ export default function Appointments() {
             </li>
             <li></li>
           </ul>
-          <AppointmentRow
+          {/* <AppointmentRow
             data={{
               docImage: "doc (1).png",
               docName: "Brad Simmons",
@@ -64,10 +64,10 @@ export default function Appointments() {
               bookingDate: "21 July 2021",
               status: "Upcoming",
             }}
-          />
+          /> */}
         </div>
       </div>
-      <div className="appointments fadeInUp">
+      <div className="appointments fadeIn ">
         <h4 className="appointments__title">Changed requests</h4>
         <div className="appointments__body">
           <ul className="appointments__body-filters">

@@ -835,6 +835,24 @@
   input[type="file"] {
     display: none;
   }
+
+  &--inline {
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 0 30px;
+    height: 50px;
+    .customFile {
+      &__ico {
+        margin: 0 10px 0 0;
+      }
+      &__para {
+        font-size: 12px;
+      }
+    }
+    .button {
+      margin: 0 0 0 auto;
+    }
+  }
 }
 .button {
   display: flex;
@@ -967,6 +985,68 @@
   overflow: hidden;
   img {
     @include fullImage;
+  }
+}
+
+.stepsRoad {
+  display: flex;
+  justify-content: center;
+  margin: 45px auto;
+
+  &__step {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    margin-right: 75px;
+    color: $gray-1;
+    border: 2px solid $gray-1;
+    background: transparent;
+    svg {
+      width: 55%;
+      height: auto;
+      max-height: 55%;
+    }
+    &.done {
+      color: $white;
+      border-color: $main;
+      background: $main;
+    }
+    &.active {
+      color: $secondary;
+      border-color: $secondary;
+      background: transparent;
+    }
+
+    &.active,
+    &.done {
+      &:after {
+        background: $main;
+      }
+    }
+
+    &:after {
+      position: absolute;
+      content: "";
+      display: block;
+      width: 55px;
+      height: 2px;
+      background: $gray-1;
+      border-radius: 4px;
+      left: calc(100% + 10px);
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &:last-child {
+      margin-right: 0 !important;
+      &:after {
+        display: none;
+      }
+    }
   }
 }
 

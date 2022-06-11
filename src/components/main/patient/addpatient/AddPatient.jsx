@@ -4,7 +4,7 @@ import * as SVG from "components/items/SVG";
 import Check from "components/items/Check";
 import Select from "components/items/Select";
 
-export default function Patient() {
+export default function AddPatient() {
   const [healtCard, setHealtCard] = useState(false);
   const icoPath = process.env.PUBLIC_URL + "/assets/images/logo.png";
 

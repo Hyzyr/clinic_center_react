@@ -1,11 +1,15 @@
-import React from "react";
-import Check from "../items/Check";
-import Input from "../items/Input";
-import Select from "../items/Select";
+import React, { useState } from "react";
+import Check from "components/items/Check";
+import Input from "components/items/Input";
+import Select from "components/items/Select";
 import * as SVG from "components/items/SVG";
 import { Link } from "react-router-dom";
+import UserForm from "./providerSteps/UserForm";
+import LocationForm from "./providerSteps/LocationForm";
+import ContactForm from "./providerSteps/ContactForm";
+import BillingForm from "./providerSteps/BillingForm";
 
-export default function Signup() {
+export const SignupPatient = () => {
   return (
     <div className="login__inner-form signup fadeInUp">
       <div className="form">
@@ -13,6 +17,7 @@ export default function Signup() {
           <div className="circleIco">{SVG.addUser}</div>
           <h6>Create Account</h6>
         </div>
+
         <div className="form__row">
           <div className="form__column form__column--wide">
             <div className="form__title">
@@ -131,4 +136,111 @@ export default function Signup() {
       </div>
     </div>
   );
-}
+};
+
+export const SignupProvider = () => {
+  const initState = {
+    user: {
+      active: true,
+      done: false,
+      svg: SVG.person,
+    },
+    location: {
+      active: false,
+      done: false,
+      svg: SVG.locationMark,
+    },
+    contact: {
+      active: false,
+      done: false,
+      svg: SVG.phoneMessage,
+    },
+    billing: {
+      active: false,
+      done: false,
+      svg: SVG.shieldTick,
+    },
+  };
+
+  const [form, setForm] = useState({});
+  const [stepDetails, setStepDetails] = useState(initState);
+  const updateForm = (data) => {
+    setForm({ ...form, ...data });
+  };
+  const resetFunc = () => {
+    setForm({});
+    setStepDetails(initState);
+  };
+  const doneFunc = () => {
+    console.log("form is >> ", form);
+  };
+
+  const nextStep = () => {
+    let updatedStepDetails = { ...stepDetails };
+    const steps = Object.keys(stepDetails);
+
+    for (let i = 0; i < steps.length; i++) {
+      const element = updatedStepDetails[steps[i]];
+      const nextElement = updatedStepDetails[steps[i + 1]] ?? null;
+
+      if (element.active && nextElement) {
+        element.active = false;
+        element.done = true;
+        nextElement.active = true;
+        break;
+      } else if (element.active) {
+        doneFunc();
+        break;
+      }
+    }
+    setStepDetails(updatedStepDetails);
+  };
+
+  const commonProps = {
+    form,
+    updateForm,
+  };
+
+  return (
+    <div className="login__inner-form signup fadeInUp">
+      <div className="form">
+        <div className="form__header">
+          <div className="circleIco">{SVG.addUser}</div>
+          <h6>Create Account</h6>
+        </div>
+        <div className="stepsRoad">
+          {Object.keys(stepDetails).map((step) => (
+            <div
+              className={`stepsRoad__step ${
+                stepDetails[step].active ? "active" : ""
+              } ${stepDetails[step].done ? "done" : ""}`}
+              key={step}
+            >
+              {stepDetails[step].svg}
+            </div>
+          ))}
+        </div>
+
+        {stepDetails.user.active && <UserForm {...commonProps} />}
+        {stepDetails.location.active && <LocationForm {...commonProps} />}
+        {stepDetails.contact.active && <ContactForm {...commonProps} />}
+        {stepDetails.billing.active && <BillingForm {...commonProps} />}
+
+        <div className="form__buttons">
+          <button className="button button--secondary" onClick={resetFunc}>
+            Reset
+          </button>
+          {!stepDetails.billing.active ? (
+            <button className="button button--main" onClick={nextStep}>
+              Continue
+            </button>
+          ) : (
+            <button className="button button--main" onClick={doneFunc}>
+              Register Now
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};

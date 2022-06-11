@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
-import Signin from "./Signin";
-import Signup from "./Signup";
+import { SigninPatient, SigninProvider } from "./signin/Signin";
+import { SignupPatient, SignupProvider } from "./signup/Signup";
 
 export default function Login() {
   const [menu, setMenu] = useState(true);
-  const [tab, setTab] = useState("signin");
-  const [account, setAccount] = useState("Patient");
+  const [tab, setTab] = useState("signup");
+  const [type, setType] = useState("Provider");
+
   return (
     <>
       <Sidebar tab={tab} setTab={setTab} menu={menu} setMenu={setMenu} />
@@ -18,21 +19,23 @@ export default function Login() {
             <div className="login__inner-buttons">
               <button
                 type="button"
-                onClick={() => setAccount("Patient")}
-                className={account === "Patient" ? "active" : ""}
+                onClick={() => setType("Patient")}
+                className={type === "Patient" ? "active" : ""}
               >
                 Patient
               </button>
               <button
                 type="button"
-                onClick={() => setAccount("Provider")}
-                className={account === "Provider" ? "active" : ""}
+                onClick={() => setType("Provider")}
+                className={type === "Provider" ? "active" : ""}
               >
                 Provider
               </button>
             </div>
-            {tab === "signin" && <Signin />}
-            {tab === "signup" && <Signup />}
+            {tab === "signin" && type === "Patient" && <SigninPatient />}
+            {tab === "signin" && type === "Provider" && <SigninProvider />}
+            {tab === "signup" && type === "Patient" && <SignupPatient />}
+            {tab === "signup" && type === "Provider" && <SignupProvider />}
           </div>
         </section>
       </main>

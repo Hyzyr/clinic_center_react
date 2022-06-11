@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { FileUploader } from "react-drag-drop-files";
 import { upload } from "./SVG";
 
-export default function CustomFile() {
+export default function CustomFile({ inline = false }) {
   const fileTypes = ["JPG", "PNG", "GIF"];
   const [file, setFile] = useState(null);
   const [dragState, setDragState] = useState("idle");
@@ -30,7 +30,9 @@ export default function CustomFile() {
   };
   return (
     <div
-      className={`customFile ${dragState === "idle" ? "" : "active"}`}
+      className={`customFile ${dragState === "idle" ? "" : "active"}  ${
+        inline ? "customFile--inline" : ""
+      }`}
       ref={dropZone}
     >
       <input type="file" accept={fileTypes.toString()} ref={fileInput} />

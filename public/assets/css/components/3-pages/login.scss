@@ -202,7 +202,7 @@
           &__column {
             width: 100%;
             margin: 0 0 25px 0;
-            &--wide {
+            &--wide:not(:last-child) {
               margin: 0;
             }
           }
@@ -286,6 +286,18 @@
           &__buttons {
             margin-top: 25px;
           }
+        }
+      }
+    }
+    .stepsRoad {
+      &__step {
+        width: 25px;
+        height: 25px;
+        margin-right: 50px;
+
+        &:after {
+          left: calc(100% + 8px);
+          width: 35px;
         }
       }
     }

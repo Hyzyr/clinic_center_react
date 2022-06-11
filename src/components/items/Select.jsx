@@ -1,11 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-export default function Select({ list, selectedItem = null, label = null }) {
+export default function Select({
+  onChange,
+  list,
+  selectedItem = null,
+  label = null,
+}) {
   const [active, setActive] = useState(false);
   const [selected, setSelected] = useState(selectedItem ?? list[0]);
   const toggle = () => {
     setActive(!active);
   };
+  useEffect(() => {
+    if (onChange) {
+      onChange(selected);
+    }
+  }, [selected]);
 
   return (
     <>

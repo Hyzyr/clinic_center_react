@@ -3,6 +3,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&display=swap");
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0;
@@ -1236,6 +1239,26 @@ li {
 .customFile input[type=file] {
   display: none;
 }
+.customFile--inline {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 0 30px;
+  height: 50px;
+}
+.customFile--inline .customFile__ico {
+  margin: 0 10px 0 0;
+}
+.customFile--inline .customFile__para {
+  font-size: 12px;
+}
+.customFile--inline .button {
+  margin: 0 0 0 auto;
+}
 
 .button {
   display: -webkit-box;
@@ -1389,6 +1412,74 @@ li {
   height: 100%;
   object-fit: cover;
   -o-object-fit: cover;
+}
+
+.stepsRoad {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 45px auto;
+}
+.stepsRoad__step {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  margin-right: 75px;
+  color: #979797;
+  border: 2px solid #979797;
+  background: transparent;
+}
+.stepsRoad__step svg {
+  width: 55%;
+  height: auto;
+  max-height: 55%;
+}
+.stepsRoad__step.done {
+  color: #fff;
+  border-color: #755dab;
+  background: #755dab;
+}
+.stepsRoad__step.active {
+  color: #2cbdb9;
+  border-color: #2cbdb9;
+  background: transparent;
+}
+.stepsRoad__step.active:after, .stepsRoad__step.done:after {
+  background: #755dab;
+}
+.stepsRoad__step:after {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 55px;
+  height: 2px;
+  background: #979797;
+  border-radius: 4px;
+  left: calc(100% + 10px);
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.stepsRoad__step:last-child {
+  margin-right: 0 !important;
+}
+.stepsRoad__step:last-child:after {
+  display: none;
 }
 
 @-webkit-keyframes animation {
@@ -1771,6 +1862,15 @@ li {
   line-height: 1.5;
   text-align: center;
   color: #081616;
+}
+.form__para {
+  color: #755dab;
+  font-family: "DM Sans", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.3em;
+  margin-top: 1.25em;
 }
 .form__terms {
   margin-top: 35px;
@@ -5204,7 +5304,7 @@ li {
     width: 100%;
     margin: 0 0 25px 0;
   }
-  .login__inner-form.signup .form__column--wide {
+  .login__inner-form.signup .form__column--wide:not(:last-child) {
     margin: 0;
   }
 
@@ -5786,6 +5886,15 @@ li {
   }
   .login__inner-form.signin .form__buttons {
     margin-top: 25px;
+  }
+  .login .stepsRoad__step {
+    width: 25px;
+    height: 25px;
+    margin-right: 50px;
+  }
+  .login .stepsRoad__step:after {
+    left: calc(100% + 8px);
+    width: 35px;
   }
 
   .tabs__body {

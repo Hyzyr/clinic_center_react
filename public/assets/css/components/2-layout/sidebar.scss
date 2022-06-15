@@ -100,7 +100,7 @@
         }
 
         a {
-          cursor: context-menu;
+          cursor: default;
           font-family: $font-main;
           font-style: normal;
           font-weight: 500;
@@ -216,6 +216,7 @@
 @mixin sidebar-xlg-xxlg {
   .sidebar {
     top: 75px;
+    width: 250px;
     height: calc(100% - 75px);
     &--lg {
       width: 330px;
@@ -266,7 +267,7 @@
     background: rgba($color: $black, $alpha: 0.4);
     opacity: 0;
     overflow-x: hidden;
-    transition: all 0s ease-in 0.4s, opacity 0.2s ease-in 0.2s;
+    transition: all 0s ease 0.4s, opacity 0.2s ease-in 0.2s;
     &__inner {
       position: absolute;
       width: 70%;

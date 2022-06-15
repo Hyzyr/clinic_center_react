@@ -14,6 +14,9 @@ export default function Input({
   notEmpty = false,
   dark = false,
   setValue = null,
+  customLabel = null,
+  addClass = null,
+  disabled = false,
 }) {
   const [errorState, setErrorState] = useState(false);
   const [val, setVal] = useState(defaultValue);
@@ -46,10 +49,10 @@ export default function Input({
     setVal(value);
   };
   const increment = () => {
-    setVal(val + 1);
+    setVal(isNaN(parseInt(val)) ? 0 : parseInt(val) + 1);
   };
   const decrement = () => {
-    setVal(val - 1);
+    setVal(isNaN(parseInt(val)) ? 0 : parseInt(val) - 1);
   };
   let className = `customInput`;
 
@@ -59,35 +62,40 @@ export default function Input({
   if (svg && iconLeft) className += " customInput--iconLeft";
   if (numberButtons && type === "number") className += " customInput--buttons";
   if (dark) className += " customInput--dark";
+  if (addClass) className += ` ${addClass}`;
 
   return (
-    <div className={className}>
-      <input
-        ref={input}
-        type={type}
-        className=""
-        placeholder={placeholder}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        onChange={changeFunc}
-        value={val}
-      />
-      {label && <label>{label}</label>}
-      {prefix && <span className="prefix">{prefix}</span>}
-      {errorState && messages && <MessageBox messages={messages} />}
-      {svg && <span className="icon">{svg}</span>}
+    <>
+      {customLabel && <label className="customLabel">{customLabel}</label>}
+      <div className={className}>
+        <input
+          ref={input}
+          type={type}
+          className=""
+          placeholder={placeholder}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          onChange={changeFunc}
+          value={val}
+          disabled={disabled}
+        />
+        {label && <label>{label}</label>}
+        {prefix && <span className="prefix">{prefix}</span>}
+        {errorState && messages && <MessageBox messages={messages} />}
+        {svg && <span className="icon">{svg}</span>}
 
-      {numberButtons && type === "number" && (
-        <div className="customInput__buttons">
-          <button onClick={increment}>
-            <span className="custIcon custIcon--up"></span>
-          </button>
-          <button onClick={decrement}>
-            <span className="custIcon custIcon--down"></span>
-          </button>
-        </div>
-      )}
-    </div>
+        {numberButtons && type === "number" && (
+          <div className="customInput__buttons">
+            <button onClick={increment}>
+              <span className="custIcon custIcon--up"></span>
+            </button>
+            <button onClick={decrement}>
+              <span className="custIcon custIcon--down"></span>
+            </button>
+          </div>
+        )}
+      </div>
+    </>
   );
 }
 

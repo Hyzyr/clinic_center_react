@@ -31,7 +31,30 @@
   object-fit: cover;
   -o-object-fit: cover;
 }
+@mixin commonScroll {
+  /* width */
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
 
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #dadada;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    width: 14px;
+    background: $main;
+    border-radius: 2px;
+    transition: 0.2s ease;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba($main, 0.8);
+  }
+}
 @mixin hideScrollBar {
   & {
     -ms-overflow-style: none; /* Internet Explorer 10+ */
@@ -48,11 +71,6 @@
   text-overflow: ellipsis;
 }
 
-@mixin ellipsisOneLine {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 
 @mixin rotate {
   transform: rotate(90deg);
@@ -111,6 +129,11 @@
 }
 @mixin lg-xlg {
   @media (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin lg-xlg-extra {
+  @media (max-width: 880px) {
     @content;
   }
 }

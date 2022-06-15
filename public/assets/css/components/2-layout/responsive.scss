@@ -10,12 +10,16 @@
 // (max-width: 1280px)
 @include xlg-xxlg-extra {
   @include login-xlg-xxlg-extra;
+  @include emr-xlg-xxlg-extra;
+  @include billing-xlg-xxlg-extra;
+  @include tasks-xlg-xxlg-extra;
 }
 // (max-width: 1200px)
 @include xlg-xxlg {
   @include header-xlg-xxlg;
   @include main-xlg-xxlg;
   @include sidebar-xlg-xxlg;
+  @include tabs-xlg-xxlg;
   @include login-xlg-xxlg;
   @include booking-xlg-xxlg;
   @include calendar-xlg-xxlg;
@@ -30,7 +34,15 @@
   @include login-lg-xlg;
   @include sidebar-lg-xlg;
   @include login-lg-xlg;
+  @include account-lg-xlg;
   @include appointments-lg-xlg;
+}
+
+// (max-width: 880)
+@include lg-xlg-extra {
+  @include emr-lg-xlg-extra;
+  @include billing-xlg-extra;
+  @include tasks-lg-xlg-extra;
 }
 
 // (max-width: 768px)
@@ -44,6 +56,8 @@
   @include appointments-sm-md;
   @include contacts-sm-md;
   @include patient-sm-md;
+  @include billing-sm-md;
+  @include tasks-sm-md;
 }
 
 // (max-width: 660px)
@@ -51,14 +65,20 @@
   @include login-sm-md-extra;
   @include booking-sm-md-extra;
   @include calendar-sm-md-extra;
+  @include tabs-sm-md-extra;
   @include account-sm-md-extra;
   @include appointments-sm-md-extra;
+  @include emr-sm-md-extra;
+  @include billing-sm-md-extra;
 }
 
 // (max-width: 540px)
 @include xsm-sm {
   @include booking-xsm-sm;
   @include contacts-xsm-sm;
+  @include emr-xsm-sm;
+  @include billing-xsm-sm;
+  @include tasks-xsm-sm;
 }
 
 // (max-width: 480px)
@@ -104,6 +124,8 @@
   @include calendar-xxsm-xsm;
   @include account-xxsm-xsm;
   @include patient-xxsm-xsm;
+  @include emr-xxsm-xsm;
+  @include tasks-xxsm-xsm;
 }
 
 // (max-width: 375px)

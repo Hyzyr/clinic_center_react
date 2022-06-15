@@ -6,9 +6,12 @@ export default function Check(props) {
       props.onChange(e.target.checked);
     }
   };
+  let nodeProps = { ...props };
+  delete nodeProps.addClass;
+
   return (
-    <div className="customCheck">
-      <input type="checkbox" {...props} onChange={onChange} />
+    <div className={`customCheck ${props.addClass ?? ""}`}>
+      <input type="checkbox" {...nodeProps} onChange={onChange} />
       <label></label>
     </div>
   );

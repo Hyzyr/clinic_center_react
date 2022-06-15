@@ -28,6 +28,7 @@ input,
 textarea {
   outline: none;
   background: transparent;
+  -webkit-appearance: none;
 }
 button:focus {
   outline: none;
@@ -40,9 +41,9 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-input[type="date"] {
-  -webkit-appearance: none;
-}
+
+input[type="time"]::-webkit-inner-spin-button,
+input[type="time"]::-webkit-calendar-picker-indicator,
 input[type="date"]::-webkit-inner-spin-button,
 input[type="date"]::-webkit-calendar-picker-indicator,
 input[type="month"]::-webkit-inner-spin-button,

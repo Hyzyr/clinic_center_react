@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function Header({ menu, setMenu }) {
-  const logoPath = process.env.PUBLIC_URL + "assets/images/logo_combined.png";
+  const logoPath = process.env.PUBLIC_URL + "/assets/images/logo_combined.png";
   return (
     <header className="header header--login">
       <div className="header__inner">

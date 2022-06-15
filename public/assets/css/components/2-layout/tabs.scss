@@ -70,6 +70,9 @@
     padding: 20px 25px;
     min-height: 40vh;
 
+    &--notes {
+      padding-bottom: 60px;
+    }
     &-title {
       display: flex;
       align-items: center;
@@ -91,7 +94,7 @@
         }
       }
       &-text {
-        cursor: context-menu;
+        cursor: default;
         color: $black;
         font-family: $font-main;
         font-style: normal;
@@ -99,8 +102,22 @@
         font-size: 18px;
         line-height: 1;
       }
-      &-button {
+      &-buttons {
+        display: flex;
+        justify-content: space-between;
         margin-left: auto;
+        max-width: 440px;
+        width: 60%;
+        box-sizing: border-box;
+      }
+
+      & > .button {
+        margin-left: auto !important;
+      }
+      .button {
+        &---public {
+          margin-right: auto;
+        }
       }
     }
 
@@ -157,6 +174,18 @@
           &::placeholder {
             color: $gray;
           }
+        }
+      }
+      .customInput {
+        input {
+          border: unset;
+          border-radius: 10px;
+          background: #ffffff;
+          box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        & + .customLabel {
+          margin-top: 30px;
         }
       }
     }
@@ -269,6 +298,23 @@
   }
 }
 
+// (max-width: 1200px)
+@mixin tabs-xlg-xxlg {
+  .tabs {
+    &__body {
+      &-title {
+        &-buttons {
+          width: unset;
+          max-width: unset;
+          .button {
+            margin-left: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+// (max-width: 768px)
 @mixin tabs-sm-md {
   .tabs {
     border: 1px solid $lightblue;
@@ -293,7 +339,17 @@
       border: none;
       border-top: 1px solid $lightblue;
       background: none;
-
+      &-title {
+        .button {
+          margin-left: 10px;
+          .icon {
+            margin: 0;
+          }
+          span {
+            display: none;
+          }
+        }
+      }
       &-column {
         width: 100%;
         max-width: unset;
@@ -301,6 +357,9 @@
       }
     }
   }
+}
+
+@mixin tabs-sm-md-extra {
 }
 @mixin tabs-xxsm-xsm {
   .tabs {

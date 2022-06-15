@@ -1,0 +1,522 @@
+.emr {
+  &Form {
+    position: relative;
+    background: $white;
+    box-shadow: 6px 0px 12px rgba(26, 28, 29, 0.05);
+    box-sizing: border-box;
+    border-radius: 6px;
+    padding: 40px 30px;
+    width: 100%;
+    max-width: 525px;
+    margin: 0 auto;
+
+    &__title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin-bottom: 25px;
+
+      &-ico {
+        display: flex;
+        height: 50px;
+        width: 50px;
+
+        img {
+          @include fullImage;
+        }
+      }
+      &-text {
+        color: $black;
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 1;
+        margin-top: 25px;
+        text-align: center;
+      }
+    }
+    &__form {
+      .customInput {
+        margin-top: 25px;
+        input {
+          height: 55px;
+          //font
+          font-style: normal;
+          font-weight: 500;
+          font-size: 18px;
+        }
+        .icon {
+          right: 20px;
+          width: 0.77em;
+          font-size: 18px;
+          color: $gray;
+        }
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+      .button {
+        margin-top: 80px;
+        height: 60px;
+        width: 100%;
+        border-radius: 6px;
+        //font
+        color: rgba($white, 0.95);
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 1;
+        text-align: center;
+
+        svg {
+          width: 0.78em;
+          margin-right: 10px;
+          height: auto;
+          transform: rotateY(180deg);
+        }
+      }
+    }
+  }
+  &Search {
+    &__form {
+      display: flex;
+      justify-content: space-between;
+      background: $white;
+      border-radius: 5px;
+      padding: 16px 20px;
+      margin-bottom: 30px;
+
+      .customInput {
+        width: 20%;
+        max-width: 210px;
+
+        input {
+          height: 60px;
+          padding-left: 20px;
+          font-weight: 500;
+          font-size: 14px;
+        }
+        .icon {
+          font-size: 14px;
+          width: 1.11em;
+        }
+        label {
+          left: 20px;
+        }
+      }
+      .button {
+        width: calc(20% - 20px);
+        max-width: 150px;
+      }
+    }
+    &__title {
+      color: $black-0;
+      font-family: $font-main;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 1;
+      margin-bottom: 25px;
+    }
+    &__header {
+      color: $black-0;
+      font-family: $font-main;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 1;
+    }
+    &__label {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 135px;
+      height: 30px;
+      border-radius: 5px;
+      color: $main;
+      background: rgba($color: $main, $alpha: 0.15);
+      transition: opacity 0.2s ease-in;
+      //font
+      font-family: $font-extra2;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 1;
+      text-align: center;
+      &:hover {
+        opacity: 0.8;
+      }
+      &--mint {
+        color: $secondary;
+        background: rgba($color: $secondary, $alpha: 0.15);
+      }
+      &--green {
+        color: $green;
+        background: rgba($color: $green, $alpha: 0.15);
+      }
+      &--red {
+        color: $red;
+        background: rgba($color: $red, $alpha: 0.15);
+      }
+      &--orange {
+        color: $orange;
+        background: rgba($color: $orange, $alpha: 0.15);
+      }
+    }
+    &__list {
+      background: $white;
+      border-radius: 18px;
+      padding: 30px;
+      &-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 0 40px;
+        margin-bottom: 25px;
+
+        .emrSearch__header {
+          text-align: center;
+          width: calc(15% - 6px);
+
+          &:first-child {
+            text-align: start;
+
+            width: calc(25% - 6px);
+          }
+        }
+      }
+      &-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: $white;
+        border: 1px solid rgba($lightblue, 0.5);
+        border-radius: 18px;
+        padding: 20px 40px;
+        margin-bottom: 15px;
+        transition: 0.5s ease-out;
+        &:hover {
+          box-shadow: 0px 35px 25px rgba(118, 149, 148, 0.1);
+        }
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+      &-field {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: calc(15% - 6px);
+
+        &:first-child {
+          justify-content: flex-start;
+          width: calc(25% - 6px);
+        }
+        .profilePic {
+          margin-right: 15px;
+        }
+        strong {
+          color: $black-0;
+          font-family: $font-main;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 1.5;
+          @include ellipsisOneLine;
+        }
+
+        .emrSearch__header {
+          display: none;
+        }
+      }
+    }
+  }
+  &User {
+    &__tabs {
+      .tabs {
+        &__body {
+          &-row {
+            max-width: unset;
+          }
+        }
+      }
+    }
+
+    &__buttons {
+      display: flex;
+      justify-content: space-between;
+
+      .button {
+        &--red {
+          min-width: unset;
+          width: calc(35% - 6px);
+          max-width: 130px;
+        }
+        &--main {
+          width: 65%;
+          max-width: 260px;
+        }
+      }
+    }
+    &__details {
+      width: calc(50% - 30px);
+      max-width: 430px;
+      box-sizing: border-box;
+      background: $white-1;
+      border: 1px solid rgba($lightblue, 0.5);
+      border-radius: 5px;
+      padding: 35px 25px;
+
+      &-user {
+        width: 100%;
+        max-width: 310px;
+        margin: 0 auto 15px auto;
+
+        &-pic {
+          display: flex;
+          width: 115px;
+          height: 115px;
+          border-radius: 25px;
+          overflow: hidden;
+
+          img {
+            @include fullImage;
+          }
+        }
+      }
+      &-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        width: 100%;
+        max-width: 310px;
+        margin: 0 auto 10px auto;
+        padding: 15px 0;
+        border-bottom: 1px solid $lightblue;
+      }
+      &-label {
+        color: $gray;
+        font-family: $font-extra;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1;
+      }
+      &-text {
+        color: $black;
+        font-family: $font-extra;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 1;
+      }
+    }
+  }
+}
+
+// (max-width: 880)
+@mixin emr-lg-xlg-extra {
+  .emr {
+    &Search {
+      &__form {
+        flex-wrap: wrap;
+        padding: 15px 30px;
+
+        .customInput {
+          width: calc(50% - 10px);
+          max-width: 350px;
+          margin: 5px;
+        }
+        .button {
+          width: 100%;
+          max-width: unset;
+          margin: 5px;
+          height: 45px;
+        }
+      }
+      &__list {
+        padding: 0;
+        background: transparent;
+
+        &-header {
+          display: none;
+        }
+        &-item {
+          padding: 20px 20px;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        &-field {
+          padding: 0 10px;
+          box-sizing: border-box;
+          margin: 5px 0;
+          width: 100% !important;
+          justify-content: space-between;
+          &.first {
+            padding-bottom: 10px;
+            border-bottom: 1px solid $lightblue;
+          }
+          &.last {
+            margin: 15px 0 0 0;
+            justify-content: flex-end;
+          }
+          .emrSearch__header {
+            display: block;
+          }
+        }
+      }
+    }
+    &User {
+      &__details {
+        max-width: unset;
+        width: 100%;
+        margin: 45px 0 0 0;
+      }
+    }
+  }
+}
+
+@mixin emr-sm-md-extra {
+  .emr {
+    &Search {
+      &__title {
+        font-size: 16px;
+        margin-bottom: 15px;
+      }
+      &__form {
+        padding: 20px;
+        .customInput {
+          width: 100%;
+          margin: 8px 0;
+          max-width: unset;
+        }
+        .button {
+          margin: 5px 0;
+        }
+      }
+    }
+    &User{
+      &__buttons{
+        .button{
+          padding: 15px 5px;
+        }
+      }
+      &__details{
+        padding: 20px;
+        &-user{
+          &-pic{
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin emr-xlg-xxlg-extra {
+  .emr {
+    &Search {
+      &__form {
+        padding: 14px 10px;
+
+        .customInput {
+          input {
+            height: 45px;
+            font-size: 12px;
+            padding: 0 13px;
+          }
+          .icon {
+            right: 10px;
+          }
+          label {
+            font-size: 14px;
+            left: 13px;
+          }
+          &--icon {
+            input {
+              padding: 0 28px 0 10px;
+            }
+          }
+        }
+        .button {
+          width: calc(20% - 20px);
+          max-width: 150px;
+        }
+      }
+      &__list {
+        padding: 25px 20px;
+
+        &-header {
+          padding: 0 20px;
+          .emrSearch__header {
+            text-align: center;
+            width: calc(16% - 6px);
+          }
+          .small {
+            width: calc(10% - 6px);
+          }
+        }
+        &-field {
+          width: calc(16% - 6px);
+        }
+        &-item {
+          padding: 15px 20px;
+
+          .small {
+            width: calc(10% - 6px);
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin emr-xsm-sm {
+  .emr {
+    &Form {
+      padding: 30px 20px;
+
+      &__title {
+        &-text {
+          margin-top: 15px;
+        }
+      }
+      &__form {
+        .customInput {
+          margin-top: 20px;
+          input {
+            height: 50px;
+            //font
+            font-size: 16px;
+          }
+        }
+        .button {
+          font-size: 16px;
+          margin-top: 60px;
+          height: 50px;
+        }
+      }
+    }
+  }
+}
+
+@mixin emr-xxsm-xsm {
+  .emr {
+    &Search {
+      &__form {
+        padding: 15px;
+      }
+      &__list {
+        &-item {
+          margin-bottom: 10px;
+          padding: 20px 10px;
+        }
+      }
+    }
+  }
+}

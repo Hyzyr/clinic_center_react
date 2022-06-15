@@ -1,0 +1,592 @@
+.billing {
+  padding: 30px 15px;
+  box-sizing: border-box;
+  background: $white;
+  border: 1px solid $lightblue;
+  border-radius: 8px;
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    background: $white-22;
+    box-shadow: 0px 0px 1px rgba($black, 0.2);
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+
+    &-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
+      width: 270px;
+      height: 45px;
+      padding: 12px 20px 12px 13px;
+
+      background: $white;
+      box-shadow: 1px 1px 1px rgba($black, 0.2);
+      border-radius: 5px;
+      svg {
+        color: $gray;
+        width: 16px;
+        height: auto;
+      }
+
+      span {
+        color: $black-1;
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 1;
+        letter-spacing: 0.25px;
+      }
+    }
+    &-buttons {
+      display: flex;
+
+      .button {
+        padding: 12px 24px;
+        margin: 0 10px;
+        //font
+        font-weight: 700;
+        font-size: 16px;
+        letter-spacing: 0.25px;
+        svg {
+          margin-right: 8px;
+          width: 11px;
+          height: auto;
+        }
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+  &__list {
+    max-height: calc(100vh - 320px);
+    min-height: 460px;
+    overflow-y: auto;
+    overflow-x: auto;
+    @include commonScroll;
+
+    &--auto {
+      .billing__list {
+        &-headers {
+          padding: 0;
+        }
+        &-header {
+          max-width: 170px;
+        }
+
+        &-item {
+          &-field {
+            max-width: 170px;
+          }
+        }
+      }
+      .wide {
+        max-width: 270px;
+      }
+    }
+    &-header {
+      color: $black-0;
+      font-family: $font-main;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+      text-align: center;
+      letter-spacing: 0.4px;
+      flex: 1;
+      padding: 0 5px;
+      white-space: nowrap;
+      min-width: 113px;
+      box-sizing: border-box;
+
+      &.left {
+        text-align: left;
+      }
+    }
+    &-text {
+      color: $gray;
+      font-family: $font-main;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.4;
+      text-align: center;
+      letter-spacing: 0.25px;
+      transition: 0.2s ease;
+      padding: 0 5px;
+      white-space: nowrap;
+      min-width: 113px;
+      box-sizing: border-box;
+    }
+    &-headers {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: $white;
+      box-sizing: border-box;
+      display: flex;
+      align-items: baseline;
+      height: 40px;
+      margin-bottom: 15px;
+      padding-right: 26px;
+    }
+    &-item {
+      cursor: pointer;
+      display: flex;
+      padding: 20px 0;
+      border-top: 1px solid rgba($black-1, 0.1);
+      box-shadow: 0px 0px 1px 0px rgba($black-0, 0.15);
+      transition: 0.2s ease;
+      padding-right: 4px;
+      width: fit-content;
+      min-width: 100%;
+      box-sizing: border-box;
+
+      &:hover {
+        background: $white-22;
+
+        .billing__list-text {
+          color: $black-01;
+        }
+      }
+
+      &-field {
+        flex: 1;
+
+        &.left {
+          .billing__list-text {
+            text-align: left;
+          }
+        }
+        .billing__list-header {
+          display: none;
+        }
+      }
+    }
+    &-view {
+      display: none;
+    }
+
+    &-edit {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      color: $gray;
+      border-radius: 50%;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background: rgba($gray, 0.15);
+      }
+      svg {
+        width: auto;
+        height: 12px;
+      }
+      span {
+        display: none;
+      }
+    }
+  }
+}
+
+.billingForm {
+  position: relative;
+  background: $white;
+  box-shadow: 6px 0px 12px rgba(26, 28, 29, 0.05);
+  box-sizing: border-box;
+  border-radius: 6px;
+  padding: 20px 60px 40px 60px;
+  width: 100%;
+  max-width: 725px;
+  margin: 0 auto;
+
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 25px;
+
+    &-ico {
+      display: flex;
+      height: 50px;
+      width: 50px;
+
+      img {
+        @include fullImage;
+      }
+    }
+    &-text {
+      color: $black;
+      font-family: $font-main;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 1;
+      margin-top: 25px;
+      text-align: center;
+    }
+  }
+  &__back {
+    position: absolute;
+    top: 30px;
+    left: 60px;
+    width: 35px;
+    height: 35px;
+    background: $main-2;
+    border-radius: 6px;
+    transition: background-color 0.2s ease-in-out;
+
+    background: $white-3;
+    border-radius: 10px;
+
+    &:hover {
+      background-color: $lightblue;
+    }
+  }
+  &__body {
+    &-row {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 -10px 40px -10px;
+    }
+    &-column2 {
+      width: calc(50% - 20px);
+      margin: 0 10px;
+    }
+    &-column3 {
+      width: calc(33.3% - 20px);
+      margin: 0 10px;
+    }
+    &-fee {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 50px;
+      box-sizing: border-box;
+      background: $white-3;
+      border: 2px dashed rgba($main, 0.75);
+      border-radius: 12px;
+      margin-bottom: 40px;
+
+      // font
+      color: $main;
+      font-family: $font-main;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 1;
+      text-align: center;
+    }
+    .customLabel {
+      font-family: $font-main;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 1;
+      color: $black-01;
+    }
+    .customInput {
+      input {
+        color: $gray;
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 1;
+
+        &:disabled {
+          cursor: default;
+          background: $white-1;
+        }
+      }
+    }
+  }
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 55px;
+
+    &-title {
+      //font
+      color: $black;
+      font-family: $font-main;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 1;
+    }
+    &-buttons {
+      display: flex;
+      .button {
+        height: 50px;
+        width: 130px;
+        margin: 0 10px;
+
+        &--main {
+          width: 170px;
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+
+// (max-width: 1280px)
+@mixin billing-xlg-xxlg-extra {
+  .billingForm {
+    &__body {
+      &-fee {
+        font-size: 16px;
+        margin-bottom: 25px;
+      }
+      &-row {
+        margin: 0 -10px 25px -10px;
+      }
+    }
+  }
+}
+
+// (max-width: 880)
+@mixin billing-xlg-extra {
+  .billing {
+    padding: 15px;
+    &__info {
+      padding: 15px;
+      &-label {
+        height: 40px;
+        width: 250px;
+        span {
+          font-size: 14px;
+        }
+      }
+      &-buttons {
+        .button {
+          font-size: 14px;
+          margin: 0 5px;
+          padding: 5px 15px;
+        }
+      }
+    }
+  }
+}
+
+// (max-width: 768px)
+@mixin billing-sm-md {
+  .billing {
+    padding: 0;
+    background: transparent;
+    border: unset;
+    border-radius: unset;
+
+    &__info {
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+
+      &-buttons {
+        height: 35px;
+        .button {
+          font-size: 12px;
+          margin: 0 10px 0 0;
+        }
+      }
+      &-label {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
+    &__list {
+      overflow: unset;
+      max-height: unset;
+
+      &-headers {
+        display: none;
+      }
+
+      &-view {
+        display: block;
+      }
+
+      &-edit {
+        border-radius: unset;
+        background: unset !important;
+      }
+      &-text {
+        min-width: unset;
+        @include ellipsisOneLine;
+        max-width: calc(60% - 5px);
+      }
+      &-item {
+        display: flex;
+        flex-direction: column;
+        padding: 15px 15px 0 15px;
+        background: $white;
+        border: 1px solid $lightblue;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        width: unset;
+
+        &:hover {
+          background: $white;
+        }
+
+        .billing__list-header {
+          display: block;
+          flex: unset;
+          text-align: left;
+          min-width: unset;
+        }
+
+        &-field {
+          display: flex;
+          justify-content: space-between;
+          padding: 5px 0;
+          border-bottom: 1px solid rgba($lightblue, 0.5);
+          max-width: unset !important;
+          overflow: hidden;
+        }
+        &-buttons {
+          display: flex;
+          button {
+            padding: 20px 10px;
+            flex-grow: 1;
+            border-radius: unset;
+            background: unset !important;
+            height: unset;
+            width: unset;
+            &:hover {
+              opacity: 0.8;
+            }
+            span {
+              display: block;
+              margin-right: 10px;
+
+              //font
+              color: $gray;
+              font-family: $font-main;
+              font-style: normal;
+              font-weight: 600;
+              font-size: 14px;
+              line-height: 1;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+  .billingForm {
+    padding: 20px 30px;
+    &__back {
+      left: 30px;
+    }
+    &__body {
+      &-row {
+        margin: 0 -6px 20px -6px;
+      }
+      &-column2 {
+        width: calc(50% - 12px);
+        margin: 0 6px;
+      }
+      &-column3 {
+        width: calc(33.3% - 12px);
+        margin: 0 6px;
+      }
+      .customLabel {
+        margin-bottom: 10px;
+      }
+    }
+    &__footer {
+      &-title {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+// (max-width: 660px)
+@mixin billing-sm-md-extra {
+  .billingForm {
+    padding: 20px;
+    &__back {
+      left: 20px;
+    }
+    &__body {
+      .customInput {
+        input {
+          height: 45px;
+          font-size: 16px;
+          padding: 0 20px;
+        }
+        &--icon {
+          input {
+            padding: 0 40px 0 20px;
+          }
+        }
+      }
+    }
+    &__footer {
+      flex-wrap: wrap;
+      &-title {
+        font-size: 16px;
+        width: 100%;
+        margin-bottom: 15px;
+      }
+      &-buttons {
+        width: 100%;
+        display: flex;
+        margin: 0 -10px;
+        .button {
+          height: 45px;
+          width: calc(50% - 20px);
+          margin: 0 10px;
+
+          &--main {
+            width: 50%;
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+// (max-width: 540px)
+@mixin billing-xsm-sm {
+  .billing {
+    &__info {
+      &-buttons {
+        width: 100%;
+        justify-content: space-between;
+        .button {
+          width: calc(50% - 4px);
+        }
+      }
+    }
+  }
+  .billingForm {
+    &__body {
+      &-row {
+        margin: 0;
+        flex-wrap: wrap;
+      }
+      &-column2,
+      &-column3 {
+        width: 100%;
+        margin: 8px 0;
+      }
+      &-fee {
+        margin: 15px 0 10px 0;
+      }
+    }
+  }
+}

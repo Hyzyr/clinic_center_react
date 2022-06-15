@@ -55,6 +55,53 @@ const CalendarBig = (props) => {
   );
 };
 
+const CalendarBigScroll = (props) => {
+  const onChange = (dates) => {
+    console.log(dates);
+    setTimeout(() => props.setStep(props.nextStep), 1000);
+  };
+
+  const getDates = (startDate, daysToAdd) => {
+    let aryDates = [];
+
+    for (var i = 0; i <= daysToAdd; i++) {
+      var currentDate = new Date();
+      currentDate.setDate(startDate.getDate() + i);
+      aryDates.push({
+        date: currentDate,
+        available: true,
+        scheduled: i + 1,
+        onDemand: i + 1,
+        completed: i + 1,
+        cancelled: i + 1,
+      });
+    }
+
+    return aryDates;
+  };
+  const daysWithSlot = getDates(new Date(), 7);
+
+  return (
+    <DatePicker
+      // selected={startDate}
+      onChange={onChange}
+      // startDate={startDate}
+      // endDate={endDate}
+      inline
+      calendarContainer={CalendarContainer}
+      renderCustomHeader={() => ""}
+      renderDayContents={(day, date) => (
+        <CalendarDayContents
+          day={day}
+          date={date}
+          addClass={"no-padding"}
+          daysWithSlot={daysWithSlot}
+        />
+      )}
+    />
+  );
+};
+
 const months = [
   "Jan",
   "Feb",
@@ -136,7 +183,7 @@ const CalendarHeader = ({
   );
 };
 
-const CalendarDayContents = ({ day, date, daysWithSlot }) => {
+const CalendarDayContents = ({ day, date, daysWithSlot, addClass }) => {
   const getTime = (given) => {
     let givenDate = new Date(given);
     givenDate.setHours(0, 0, 0, 0);
@@ -148,8 +195,33 @@ const CalendarDayContents = ({ day, date, daysWithSlot }) => {
   return (
     <>
       <div className="calendarInline__day-space"></div>
-      <div className={`calendarInline__day-inner ${slots ? "visible" : ""}`}>
+      <div
+        className={`calendarInline__day-inner  ${addClass ?? ""} ${
+          slots && slots.slots ? "visible" : ""
+        } ${slots && slots.available ? "available" : ""}`}
+      >
         <strong className="calendarInline__title">{getDate(date)}</strong>
+        {slots?.scheduled && (
+          <span className="calendarInline__tag scheduled ">
+            {slots.scheduled}
+          </span>
+        )}
+        {slots?.onDemand && (
+          <span className="calendarInline__tag onDemand ">
+            {slots.onDemand}
+          </span>
+        )}
+        {slots?.completed && (
+          <span className="calendarInline__tag completed ">
+            {slots.completed}
+          </span>
+        )}
+        {slots?.cancelled && (
+          <span className="calendarInline__tag cancelled ">
+            {slots.cancelled}
+          </span>
+        )}
+
         <span className="calendarInline__event ">
           {slots?.slots ? `${slots.slots} slots available` : ""}
         </span>
@@ -157,5 +229,5 @@ const CalendarDayContents = ({ day, date, daysWithSlot }) => {
     </>
   );
 };
-
+export { CalendarBigScroll };
 export default CalendarBig;

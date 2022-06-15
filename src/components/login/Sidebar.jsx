@@ -15,11 +15,11 @@ export default function Sidebar({ tab, setTab, menu, setMenu }) {
       <div className="sidebar__inner">
         <div className="sidebar__inner-logo">
           <div className="sidebar__inner-logo-ico">
-            <img src={pubFolder + "assets/images/logo.png"} alt="logo" />
+            <img src={pubFolder + "/assets/images/logo.png"} alt="logo" />
           </div>
           <div className="sidebar__inner-logo-text">
             <img
-              src={pubFolder + "assets/images/logo_text.png"}
+              src={pubFolder + "/assets/images/logo_text.png"}
               alt="RhynoCare"
             />
           </div>
@@ -28,7 +28,7 @@ export default function Sidebar({ tab, setTab, menu, setMenu }) {
           <div className="sidebar__inner-help-img">
             <img
               src={
-                pubFolder + "assets/images/illustrations/doc_illustration.svg"
+                pubFolder + "/assets/images/illustrations/doc_illustration.svg"
               }
               alt="Doc"
             />

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Input from "components/items/Input";
 import Select from "components/items/Select";
 import Check from "components/items/Check";
-import { SwitchCheckButton } from "components/items/SwitchCheck";
+import SwitchCheck, { SwitchCheckButton } from "components/items/SwitchCheck";
 import DayList, { DayListItem } from "./DayList";
 import * as SVG from "components/items/SVG";
 import { CalendarBigScroll } from "components/main/CalendarBig";
@@ -21,15 +21,19 @@ const Tasks = ({ setPage }) => {
   ];
   const [dataType, setDataType] = useState(selectData[0]);
   const [popup, setPopup] = useState(false);
+  const [drop, setDrop] = useState(false);
   const setDataTypeValue = (value) => setDataType(value);
 
   const setPageAppointment = () => setPage("patient");
   const setPageAvailability = () => setPage("available");
   const avatarPath = process.env.PUBLIC_URL + "/assets/images/avatars/user.png";
+  const toggleDrop = () => {
+    setDrop(!drop);
+  };
   const showPopup = (data) => {
     setPopup(data);
   };
-  const closePopup = (data) => {
+  const closePopup = () => {
     setPopup(null);
   };
   return (
@@ -116,7 +120,27 @@ const Tasks = ({ setPage }) => {
           </div>
           <div className="tasks__inner-field-buttons">
             <Input svg={SVG.search} iconLeft placeholder="Find patient...  " />
-            <SwitchCheckButton label={"Go Online"} />
+            <div className="tasks__drop-outer">
+              <SwitchCheckButton label={"Go Online"} onClick={toggleDrop} />
+              {drop && (
+                <div className="tasks__drop fadeIn">
+                  <div className="tasks__drop-row">
+                    <span>Go Online to see patients on demand</span>
+                    <SwitchCheck />
+                  </div>
+                  <div className="tasks__drop-row">
+                    <span>Default time slot for scheduled appointments</span>
+                    <Select
+                      list={["5 min", "10 min", "15 min", "20 min", "25 min"]}
+                    />
+                  </div>
+                  <div className="tasks__drop-row">
+                    <span>Max hold amount for cash pay patients(CAD$)</span>
+                    <Input />
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
         {dataType.text === "Month" && (

@@ -138,6 +138,7 @@
       }
     }
   }
+
   &__inner {
     display: flex;
     flex-direction: column;
@@ -199,7 +200,7 @@
       &-buttons {
         display: flex;
         align-items: center;
-        .button {
+        & > .button {
           height: 40px;
           margin-right: 15px;
           padding: 0 15px;
@@ -213,7 +214,7 @@
             margin-right: 0;
           }
         }
-        .customInput {
+        & > .customInput {
           height: 40px;
           width: 230px;
           margin-right: 15px;
@@ -424,6 +425,79 @@
       font-size: 12px;
       line-height: 1;
       @include ellipsisOneLine;
+    }
+  }
+  &__drop {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    width: 360px;
+    background: $main;
+    box-shadow: 1px 1px 1px rgba($black-0, 0.15);
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 20px;
+    z-index: 1;
+
+    &-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 5px;
+      margin-bottom: 20px;
+      &:last-child {
+        margin-bottom: 0px;
+      }
+
+      span {
+        color: $white;
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 1.55;
+        letter-spacing: 0.25px;
+      }
+    }
+    &-outer {
+      position: relative;
+    }
+    .customSelect {
+      &__label {
+        padding: 5px 25px 5px 10px;
+        height: 30px;
+        background: $white;
+
+        //font{
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 1;
+        color: $black;
+        white-space: nowrap;
+
+        &:after {
+          right: 10px;
+        }
+      }
+      &__list {
+        padding: 15px 10px;
+        &-item {
+          padding: 5px;
+          white-space: nowrap;
+        }
+      }
+    }
+    .customInput {
+      margin: 0;
+      input {
+        padding: 5px 10px;
+        height: 30px;
+        background: $white;
+        border-radius: 5px;
+        width: 95px;
+      }
     }
   }
 }
@@ -723,7 +797,9 @@
     max-height: unset;
     height: unset;
     &__popup {
-      top: 300px;
+      position: fixed;
+      top: 50%;
+      transform: translate(-50%, -50%);
     }
     &__inner {
       padding: 20px;
@@ -905,6 +981,15 @@
             margin: 5px 0;
           }
         }
+      }
+    }
+    &__drop {
+      width: 100%;
+      &-outer {
+        width: 100%;
+      }
+      .customInput {
+        width: unset;
       }
     }
   }

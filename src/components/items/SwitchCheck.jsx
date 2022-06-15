@@ -16,7 +16,7 @@ const SwitchCheck = (props) => {
 
 export const SwitchCheckButton = (props) => {
   return (
-    <div className="switchCheck__button">
+    <div className="switchCheck__button" onClick={props.onClick}>
       <span>{props.label}</span>
       <SwitchCheck {...props} />
     </div>

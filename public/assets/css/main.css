@@ -5442,26 +5442,26 @@ li {
       -ms-flex-align: center;
           align-items: center;
 }
-.tasks__inner-field-buttons .button {
+.tasks__inner-field-buttons > .button {
   height: 40px;
   margin-right: 15px;
   padding: 0 15px;
   border-radius: 8px;
 }
-.tasks__inner-field-buttons .button svg {
+.tasks__inner-field-buttons > .button svg {
   width: 0.9em;
   height: auto;
   margin-right: 10px;
 }
-.tasks__inner-field-buttons .button:last-child {
+.tasks__inner-field-buttons > .button:last-child {
   margin-right: 0;
 }
-.tasks__inner-field-buttons .customInput {
+.tasks__inner-field-buttons > .customInput {
   height: 40px;
   width: 230px;
   margin-right: 15px;
 }
-.tasks__inner-field-buttons .customInput input {
+.tasks__inner-field-buttons > .customInput input {
   font-size: 14px;
   height: 41px;
   border-radius: 10px;
@@ -5470,7 +5470,7 @@ li {
   border: 1px solid #eceef5;
   border-radius: 10px;
 }
-.tasks__inner-field-buttons .customInput .icon {
+.tasks__inner-field-buttons > .customInput .icon {
   width: 18px;
   left: 10px;
   z-index: 1;
@@ -5726,6 +5726,80 @@ li {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.tasks__drop {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  width: 360px;
+  background: #755dab;
+  -webkit-box-shadow: 1px 1px 1px rgba(8, 22, 22, 0.15);
+          box-shadow: 1px 1px 1px rgba(8, 22, 22, 0.15);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 5px;
+  padding: 20px;
+  z-index: 1;
+}
+.tasks__drop-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+.tasks__drop-row:last-child {
+  margin-bottom: 0px;
+}
+.tasks__drop-row span {
+  color: #fff;
+  font-family: "DM Sans", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.55;
+  letter-spacing: 0.25px;
+}
+.tasks__drop-outer {
+  position: relative;
+}
+.tasks__drop .customSelect__label {
+  padding: 5px 25px 5px 10px;
+  height: 30px;
+  background: #fff;
+  font-family: "DM Sans", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
+  color: #1a1c1d;
+  white-space: nowrap;
+}
+.tasks__drop .customSelect__label:after {
+  right: 10px;
+}
+.tasks__drop .customSelect__list {
+  padding: 15px 10px;
+}
+.tasks__drop .customSelect__list-item {
+  padding: 5px;
+  white-space: nowrap;
+}
+.tasks__drop .customInput {
+  margin: 0;
+}
+.tasks__drop .customInput input {
+  padding: 5px 10px;
+  height: 30px;
+  background: #fff;
+  border-radius: 5px;
+  width: 95px;
 }
 
 .tasksForm {
@@ -7805,7 +7879,10 @@ li {
     height: unset;
   }
   .tasks__popup {
-    top: 300px;
+    position: fixed;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
   }
   .tasks__inner {
     padding: 20px;
@@ -8431,6 +8508,15 @@ li {
             box-sizing: border-box;
     width: 100%;
     margin: 5px 0;
+  }
+  .tasks__drop {
+    width: 100%;
+  }
+  .tasks__drop-outer {
+    width: 100%;
+  }
+  .tasks__drop .customInput {
+    width: unset;
   }
 }
 @media (max-width: 480px) {

@@ -98,7 +98,7 @@ export const SigninProvider = () => {
           </a>
         </div>
         <div className="form__buttons">
-          <Link to={"/"} className="button button--main">
+          <Link to={"/provider"} className="button button--main">
             Login
           </Link>
         </div>

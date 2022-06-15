@@ -9,6 +9,8 @@ export default function Sidebar({ menu, setMenu, children }) {
   useEffect(() => {
     if (menu) document.body.classList.add("active");
     else document.body.classList.remove("active");
+
+    return () => document.body.classList.remove("active");
   }, [menu]);
 
   return (
@@ -52,7 +54,9 @@ export const SidebarPatient = ({ routes }) => {
       <div className="sidebar__inner-help">
         <div className="sidebar__inner-help-img">
           <img
-            src={pubFolder + "/assets/images/illustrations/doc_illustration.svg"}
+            src={
+              pubFolder + "/assets/images/illustrations/doc_illustration.svg"
+            }
             alt="Doc"
           />
         </div>

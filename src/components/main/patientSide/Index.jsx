@@ -10,10 +10,13 @@ import ChartSection from "./chartSection/ChartSection";
 import Contacts from "./contacts/Contacts";
 import Membership from "./membership/Membership";
 import * as SVG from "components/items/SVG";
+import { Link } from "react-router-dom";
+import ProfilePic from "components/items/ProfilePic";
 
 export default function Index() {
   const [menu, setMenu] = useState(false);
   const [breadText, setBreadText] = useState("My Chart");
+  const avatarPath = process.env.PUBLIC_URL + "/assets/images/avatars/user.png";
 
   const routes = {
     index: {
@@ -23,7 +26,7 @@ export default function Index() {
       svg: SVG.home,
       porps: {
         index: true,
-      }
+      },
     },
     booking: {
       removeFromSidebar: true,
@@ -89,7 +92,21 @@ export default function Index() {
         <SidebarPatient routes={routes} />
       </Sidebar>
 
-      <Header title={breadText} menu={menu} setMenu={setMenu} />
+      <Header menu={menu} setMenu={setMenu}>
+        <div className="header__inner-group">
+          <div className="header__inner-bread">
+            <div className="header__inner-bread-ico">{SVG.lines}</div>
+            <div className="header__inner-bread-title">{breadText}</div>
+          </div>
+          <div className="header__inner-content">
+            <Link to={"/booking"} className="button button--main">
+              Book Now
+            </Link>
+            <button className="bellButton bellButton--new">{SVG.bell}</button>
+            <ProfilePic src={avatarPath} alt="avatar" />
+          </div>
+        </div>
+      </Header>
       <main className="main">
         <Routes>
           <Route path="/" index element={<ChartSection />} />

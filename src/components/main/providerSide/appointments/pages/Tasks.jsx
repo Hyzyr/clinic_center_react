@@ -7,7 +7,7 @@ import DayList, { DayListItem } from "./DayList";
 import * as SVG from "components/items/SVG";
 import { CalendarBigScroll } from "components/main/CalendarBig";
 
-const Tasks = () => {
+const Tasks = ({ setPage }) => {
   const selectData = [
     {
       text: "Month",
@@ -20,6 +20,10 @@ const Tasks = () => {
   ];
   const [dataType, setDataType] = useState(selectData[0]);
   const setDataTypeValue = (value) => setDataType(value);
+
+  const setPageAppointment = () => setPage("patient");
+  const setPageAvailability = () => setPage("available");
+
   return (
     <div className="tasks">
       <div className="tasks__inner">
@@ -34,10 +38,16 @@ const Tasks = () => {
             <strong>October, 2022</strong>
           </div>
           <div className="tasks__inner-field-buttons">
-            <button className="button button--main">
+            <button
+              className="button button--main"
+              onClick={setPageAvailability}
+            >
               {SVG.plus}Add Availability
             </button>
-            <button className="button button--main">
+            <button
+              className="button button--main"
+              onClick={setPageAppointment}
+            >
               {SVG.plus}Add Patient Appointment
             </button>
           </div>

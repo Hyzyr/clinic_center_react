@@ -7,7 +7,7 @@
 
   &__info {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
     background: $white-22;
     box-shadow: 0px 0px 1px rgba($black, 0.2);
     box-sizing: border-box;
@@ -45,7 +45,7 @@
     }
     &-buttons {
       display: flex;
-
+      margin-left: auto;
       .button {
         padding: 12px 24px;
         margin: 0 10px;
@@ -61,6 +61,19 @@
         &:last-child {
           margin-right: 0;
         }
+      }
+    }
+    &-back {
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      transition: background-color 0.2s ease-in-out;
+      margin-right: 20px;
+      background: $white;
+      border-radius: 10px;
+
+      &:hover {
+        background-color: $lightblue;
       }
     }
   }
@@ -241,7 +254,6 @@
     left: 60px;
     width: 35px;
     height: 35px;
-    background: $main-2;
     border-radius: 6px;
     transition: background-color 0.2s ease-in-out;
 
@@ -354,6 +366,22 @@
       }
     }
   }
+  .billing {
+    &__info {
+      &-back {
+        margin-right: 15px;
+      }
+      &-label {
+        width: 250px;
+      }
+      &-buttons {
+        .button {
+          height: 40px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
 }
 
 // (max-width: 880)
@@ -391,7 +419,13 @@
     &__info {
       flex-wrap: wrap;
       margin-bottom: 20px;
+      &-back {
+        margin-bottom: 10px;
 
+        & + .billing__info-label {
+          width: calc(100% - 50px);
+        }
+      }
       &-buttons {
         height: 35px;
         .button {

@@ -3,7 +3,7 @@ import Check from "components/items/Check";
 import Input from "components/items/Input";
 import Select from "components/items/Select";
 import * as SVG from "components/items/SVG";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UserForm from "./providerSteps/UserForm";
 import LocationForm from "./providerSteps/LocationForm";
 import ContactForm from "./providerSteps/ContactForm";
@@ -164,6 +164,8 @@ export const SignupProvider = () => {
 
   const [form, setForm] = useState({});
   const [stepDetails, setStepDetails] = useState(initState);
+  const navigate = useNavigate();
+
   const updateForm = (data) => {
     setForm({ ...form, ...data });
   };
@@ -172,7 +174,7 @@ export const SignupProvider = () => {
     setStepDetails(initState);
   };
   const doneFunc = () => {
-    console.log("form is >> ", form);
+    navigate("/provider");
   };
 
   const nextStep = () => {

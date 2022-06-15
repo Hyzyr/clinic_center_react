@@ -4,13 +4,13 @@ import PatientForm from "./pages/PatientForm";
 import Tasks from "./pages/Tasks";
 
 export default function Appointments() {
-  const [pages, setPages] = useState("tasks");
+  const [page, setPage] = useState("tasks");
 
   return (
     <>
-      {pages === "tasks" && <Tasks />}
-      {pages === "patient" && <PatientForm />}
-      {pages === "available" && <AvailableForm />}
+      {page === "tasks" && <Tasks setPage={setPage} />}
+      {page === "patient" && <PatientForm setPage={setPage} />}
+      {page === "available" && <AvailableForm setPage={setPage} />}
     </>
   );
 }

@@ -5197,6 +5197,17 @@ li {
   height: calc(100vh - 220px);
   min-height: 600px;
 }
+.tasks__popup {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: #fff;
+  border: 1px solid #eceef5;
+  -webkit-box-shadow: 2px 2px 15px rgba(8, 22, 22, 0.05);
+          box-shadow: 2px 2px 15px rgba(8, 22, 22, 0.05);
+  border-radius: 5px;
+  width: 310px;
+  min-height: 185px;
+}
 .tasks__inner {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6186,9 +6197,9 @@ li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background: #e9e9e9;
   -webkit-box-shadow: 0px 0px 1px rgba(26, 28, 29, 0.2);
           box-shadow: 0px 0px 1px rgba(26, 28, 29, 0.2);
@@ -6236,6 +6247,7 @@ li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-left: auto;
 }
 .billing__info-buttons .button {
   padding: 12px 24px;
@@ -6251,6 +6263,19 @@ li {
 }
 .billing__info-buttons .button:last-child {
   margin-right: 0;
+}
+.billing__info-back {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  -webkit-transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
+  margin-right: 20px;
+  background: #fff;
+  border-radius: 10px;
+}
+.billing__info-back:hover {
+  background-color: #eceef5;
 }
 .billing__list {
   max-height: calc(100vh - 320px);
@@ -6470,7 +6495,6 @@ li {
   left: 60px;
   width: 35px;
   height: 35px;
-  background: #8e83bc;
   border-radius: 6px;
   -webkit-transition: background-color 0.2s ease-in-out;
   transition: background-color 0.2s ease-in-out;
@@ -6701,6 +6725,17 @@ li {
   }
   .billingForm__body-row {
     margin: 0 -10px 25px -10px;
+  }
+
+  .billing__info-back {
+    margin-right: 15px;
+  }
+  .billing__info-label {
+    width: 250px;
+  }
+  .billing__info-buttons .button {
+    height: 40px;
+    font-size: 14px;
   }
 
   .tasks__inner-field-calendar {
@@ -7482,6 +7517,12 @@ li {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     margin-bottom: 20px;
+  }
+  .billing__info-back {
+    margin-bottom: 10px;
+  }
+  .billing__info-back + .billing__info-label {
+    width: calc(100% - 50px);
   }
   .billing__info-buttons {
     height: 35px;

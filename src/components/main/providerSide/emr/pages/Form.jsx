@@ -2,11 +2,13 @@ import React from "react";
 import Input from "components/items/Input";
 import * as SVG from "components/items/SVG";
 
-const Form = () => {
+const Form = ({ setPage }) => {
   const icoPath = process.env.PUBLIC_URL + "/assets/images/logo.png";
-
+  const search = () => {
+    setPage("search");
+  };
   return (
-    <div className="emrForm">
+    <div className="emrForm fadeInUp">
       <div className="emrForm__title">
         <div className="emrForm__title-ico">
           <img src={icoPath} alt="logo" />
@@ -18,7 +20,9 @@ const Form = () => {
         <Input label="Last Name" svg={SVG.person} />
         <Input label="Date of Birth" svg={SVG.calendarDay} />
         <Input label="Health Card" svg={SVG.shieldHealth} />
-        <button className="button button--main">{SVG.search} Search</button>
+        <button className="button button--main" onClick={search}>
+          {SVG.search} Search
+        </button>
       </div>
     </div>
   );

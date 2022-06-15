@@ -24,16 +24,20 @@ const repeatList = [
   },
 ];
 
-const AvailableForm = () => {
+const AvailableForm = ({ setPage }) => {
   const [repeat, setRepeat] = useState(repeatList[0]);
   const [ends, setEnds] = useState("Never");
 
   const icoPath = process.env.PUBLIC_URL + "/assets/images/logo.png";
   const setRepeatValue = (value) => setRepeat(value);
   const setEndsValue = (value) => setEnds(value);
+
+  const back = () => {
+    setPage("tasks");
+  };
   return (
     <div className="tasksForm">
-      <button type="button" className="tasksForm__back">
+      <button type="button" className="tasksForm__back" onClick={back}>
         <span className="custIcon custIcon--back"></span>
       </button>
       <div className="tasksForm__title">
@@ -106,8 +110,12 @@ const AvailableForm = () => {
         )}
 
         <div className="tasksForm__form-buttons">
-          <button className="button button--secondary">Cancel</button>
-          <button className="button button--main">DONE</button>
+          <button className="button button--secondary" onClick={back}>
+            Cancel
+          </button>
+          <button className="button button--main" onClick={back}>
+            DONE
+          </button>
         </div>
       </div>
     </div>

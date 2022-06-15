@@ -2,12 +2,16 @@ import React from "react";
 import * as SVG from "components/items/SVG";
 import Input from "components/items/Input";
 
-const Form = () => {
+const Form = ({ setPage }) => {
   const icoPath = process.env.PUBLIC_URL + "/assets/images/logo.png";
 
+  const back = () => {
+    setPage("list");
+  };
+
   return (
-    <div className="billingForm">
-      <button type="button" className="billingForm__back">
+    <div className="billingForm fadeInUp">
+      <button type="button" className="billingForm__back" onClick={back}>
         <span className="custIcon custIcon--back"></span>
       </button>
       <div className="billingForm__title">
@@ -89,8 +93,12 @@ const Form = () => {
           Biling Amount: CAD $50.00
         </div>
         <div className="billingForm__footer-buttons">
-          <button className="button button--secondary">Cancel</button>
-          <button className="button button--main">UPDATE</button>
+          <button className="button button--secondary" onClick={back}>
+            Cancel
+          </button>
+          <button className="button button--main" onClick={back}>
+            UPDATE
+          </button>
         </div>
       </div>
     </div>

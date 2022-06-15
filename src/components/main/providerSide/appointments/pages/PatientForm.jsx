@@ -3,12 +3,14 @@ import Input from "components/items/Input";
 import * as SVG from "components/items/SVG";
 import Text from "components/items/Text";
 
-const PatientForm = () => {
+const PatientForm = ({ setPage }) => {
   const icoPath = process.env.PUBLIC_URL + "/assets/images/logo.png";
-
+  const back = () => {
+    setPage("tasks");
+  };
   return (
     <div className="tasksForm">
-      <button type="button" className="tasksForm__back">
+      <button type="button" className="tasksForm__back" onClick={back}>
         <span className="custIcon custIcon--back"></span>
       </button>
       <div className="tasksForm__title">
@@ -41,8 +43,12 @@ const PatientForm = () => {
         <Input placeholder={"Scheduled"} customLabel="Date of Birth" />
         <Text placeholder={"Enter reson here..."} customLabel="Reason" />
         <div className="tasksForm__form-buttons">
-          <button className="button button--secondary">Cancel</button>
-          <button className="button button--main">UPDATE</button>
+          <button className="button button--secondary" onClick={back}>
+            Cancel
+          </button>
+          <button className="button button--main" onClick={back}>
+            UPDATE
+          </button>
         </div>
       </div>
     </div>

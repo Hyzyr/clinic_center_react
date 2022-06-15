@@ -1,16 +1,23 @@
 import React from "react";
 import * as SVG from "components/items/SVG";
 
-const History = () => {
+const History = ({ setPage }) => {
   const testData = {
     month: "December",
     fileName: "Covid19_extracautiousness v2.pdf",
     createDate: "21 Nov 1999",
   };
+  const testList = [testData, testData, testData];
 
+  const back = () => {
+    setPage("list");
+  };
   return (
-    <div className="billing">
+    <div className="billing fadeInUp">
       <div className="billing__info">
+        <button type="button" className="billing__info-back" onClick={back}>
+          <span className="custIcon custIcon--back"></span>
+        </button>
         <div className="billing__info-label">
           <span>22Jul - 22Dec, 2022</span>
           {SVG.calendarDay}
@@ -30,8 +37,9 @@ const History = () => {
           <div className="billing__list-header left wide">File Name</div>
           <div className="billing__list-header">Create Date</div>
         </div>
-        <HistoryItem data={testData} />
-        <HistoryItem data={testData} />
+        {testList.map((data, index) => (
+          <HistoryItem data={data} key={index} />
+        ))}
       </div>
     </div>
   );

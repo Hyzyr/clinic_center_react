@@ -1,7 +1,7 @@
 import React from "react";
 import * as SVG from "components/items/SVG";
 
-const List = () => {
+const List = ({ setPage }) => {
   const testData = {
     serviceDate: "12 Apr 2022",
     firstName: "John Wick",
@@ -13,16 +13,35 @@ const List = () => {
     amountHC: "$50.00",
     amountTotal: "$50.00",
   };
+  const testList = [
+    testData,
+    testData,
+    testData,
+    testData,
+    testData,
+    testData,
+    testData,
+    testData,
+    testData,
+    testData,
+  ];
+
+  const showHistory = () => {
+    setPage("history");
+  };
+  const editData = () => {
+    setPage("form");
+  };
 
   return (
-    <div className="billing">
+    <div className="billing fadeInUp">
       <div className="billing__info">
         <div className="billing__info-label">
           <span>22Jul - 22Dec, 2022</span>
           {SVG.calendarDay}
         </div>
         <div className="billing__info-buttons">
-          <button className="button button--main">
+          <button className="button button--main" onClick={showHistory}>
             {SVG.receipt} Billing History
           </button>
           <button className="button button--main">
@@ -42,28 +61,14 @@ const List = () => {
           <div className="billing__list-header">Amount(HC)</div>
           <div className="billing__list-header">Amount(Total)</div>
         </div>
-        <ListItem data={testData} />
-        <ListItem data={testData} />
-        <ListItem data={testData} />
-        <ListItem data={testData} />
-        <ListItem data={testData} />
-        <ListItem data={testData} />
-        <ListItem data={testData} />
-        <ListItem data={testData} />
-        <ListItem data={testData} />
-        <ListItem data={testData} />
-        <ListItem data={testData} />
-        <ListItem data={testData} />
-        <ListItem data={testData} />
-        <ListItem data={testData} />
-        <ListItem data={testData} />
-        <ListItem data={testData} />
-        <ListItem data={testData} />
+        {testList.map((data, index) => (
+          <ListItem data={data} key={index} editItem={editData} />
+        ))}
       </div>
     </div>
   );
 };
-const ListItem = ({ data }) => {
+const ListItem = ({ data, editItem }) => {
   return (
     <div className="billing__list-item">
       <div className="billing__list-item-field">
@@ -103,7 +108,7 @@ const ListItem = ({ data }) => {
         <div className="billing__list-text">{data.amountTotal}</div>
       </div>
       <div className="billing__list-item-buttons">
-        <button className="billing__list-edit">
+        <button className="billing__list-edit" onClick={editItem}>
           <span>Edit</span> {SVG.pen}
         </button>
       </div>

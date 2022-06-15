@@ -42,7 +42,7 @@ export default function General() {
           </div>
           <div className="form__column">
             <div className="account__user-signature">
-              <div class="inlineInput__label">Signature</div>
+              <div className="inlineInput__label">Signature</div>
               <SignatureInput path={"signature1.png"} />
             </div>
           </div>

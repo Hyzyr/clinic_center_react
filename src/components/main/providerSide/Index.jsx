@@ -78,7 +78,6 @@ export default function Index() {
 
   return (
     <>
-      
       <Sidebar menu={menu} setMenu={setMenu} setBread={setBreadText}>
         <SidebarProvider routes={routes} />
       </Sidebar>

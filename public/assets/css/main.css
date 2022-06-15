@@ -5190,16 +5190,23 @@ li {
 }
 
 .tasks {
+  position: relative;
   background: #ffffff;
   border: 1px solid #eceef5;
   border-radius: 8px;
   padding: 28px 0;
   height: calc(100vh - 220px);
   min-height: 600px;
+  z-index: 1;
 }
 .tasks__popup {
+  position: absolute;
+  top: 200px;
+  left: 50%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  padding: 20px;
+  z-index: 3;
   background: #fff;
   border: 1px solid #eceef5;
   -webkit-box-shadow: 2px 2px 15px rgba(8, 22, 22, 0.05);
@@ -5207,6 +5214,150 @@ li {
   border-radius: 5px;
   width: 310px;
   min-height: 185px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.tasks__popup-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 25px;
+}
+.tasks__popup-header-user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.tasks__popup-header-user .profilePic {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+.tasks__popup-header-user-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.tasks__popup-header-user strong {
+  font-family: "Roboto", "DM Sans", "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1;
+  color: #1a1c1d;
+}
+.tasks__popup-header-user small {
+  color: #7b8a8a;
+  font-family: "Roboto", "DM Sans", "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1;
+}
+.tasks__popup-header-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.tasks__popup-header-buttons button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  margin-left: 10px;
+  color: #7b8a8a;
+}
+.tasks__popup-header-buttons button svg {
+  width: 14px;
+  height: auto;
+}
+.tasks__popup-header-buttons button.close svg {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.tasks__popup-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 25px;
+}
+.tasks__popup-info span {
+  color: #1a1c1d;
+  font-family: "Roboto", "DM Sans", "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+}
+.tasks__popup-info span svg {
+  color: #755dab;
+  width: 1em;
+  height: auto;
+  margin-right: 10px;
+}
+.tasks__popup-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.tasks__popup-buttons .button {
+  width: 32%;
+  height: 40px;
+  font-family: "Rubik", "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1;
+  text-align: center;
+}
+.tasks__popup-buttons .button:hover {
+  opacity: 0.6;
+}
+.tasks__popup-buttons .button--green {
+  color: #2cbdb9;
+  background: rgba(44, 189, 185, 0.08);
+}
+.tasks__popup-buttons .button--blue {
+  color: #755dab;
+  background: #e5e5e5;
+}
+.tasks__popup-buttons .button--red {
+  color: #fe4d97;
+  background: #ffe6e3;
 }
 .tasks__inner {
   display: -webkit-box;
@@ -7652,6 +7803,9 @@ li {
     padding: 0;
     max-height: unset;
     height: unset;
+  }
+  .tasks__popup {
+    top: 300px;
   }
   .tasks__inner {
     padding: 20px;

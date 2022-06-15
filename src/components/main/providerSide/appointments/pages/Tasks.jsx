@@ -6,6 +6,7 @@ import { SwitchCheckButton } from "components/items/SwitchCheck";
 import DayList, { DayListItem } from "./DayList";
 import * as SVG from "components/items/SVG";
 import { CalendarBigScroll } from "components/main/CalendarBig";
+import ProfilePic from "components/items/ProfilePic";
 
 const Tasks = ({ setPage }) => {
   const selectData = [
@@ -19,13 +20,55 @@ const Tasks = ({ setPage }) => {
     },
   ];
   const [dataType, setDataType] = useState(selectData[0]);
+  const [popup, setPopup] = useState(false);
   const setDataTypeValue = (value) => setDataType(value);
 
   const setPageAppointment = () => setPage("patient");
   const setPageAvailability = () => setPage("available");
-
+  const avatarPath = process.env.PUBLIC_URL + "/assets/images/avatars/user.png";
+  const showPopup = (data) => {
+    setPopup(data);
+  };
+  const closePopup = (data) => {
+    setPopup(null);
+  };
   return (
     <div className="tasks">
+      {popup && (
+        <div className="tasks__popup fadeIn">
+          <div className="tasks__popup-header">
+            <div className="tasks__popup-header-user">
+              <ProfilePic src={avatarPath} alt="avatar" />
+              <div className="tasks__popup-header-user-group">
+                <strong>Morris Beck Silam</strong>
+                <small>Skin Problem</small>
+              </div>
+            </div>
+            <div className="tasks__popup-header-buttons">
+              <button>{SVG.pen}</button>
+              <button className="close" onClick={closePopup}>
+                {SVG.plus}
+              </button>
+            </div>
+          </div>
+          <div className="tasks__popup-info">
+            <span>{SVG.calendarDay} Fri 08 Oct, 2022</span>
+            <span>{SVG.schedule} 7.00PM - 7.30PM</span>
+          </div>
+          <div className="tasks__popup-buttons">
+            <button className="button button--green" onClick={closePopup}>
+              View EMR
+            </button>
+            <button className="button button--blue" onClick={closePopup}>
+              Complete
+            </button>
+            <button className="button button--red" onClick={closePopup}>
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className="tasks__inner">
         <div className="tasks__inner-field">
           <div className="tasks__inner-field-calendar">
@@ -83,39 +126,56 @@ const Tasks = ({ setPage }) => {
         )}
         {dataType.text === "Day" && (
           <DayList>
-            <DayListItem start={"1.00"} end={"2.00"} period="Am" disabled />
-            <DayListItem start={"1.00"} end={"2.00"} disabled available />
-            <DayListItem start={"1.00"} end={"2.00"} />
-            <DayListItem start={"1.00"} end={"2.00"} />
-            <DayListItem start={"1.00"} end={"2.00"} />
-            <DayListItem start={"1.00"} end={"2.00"} />
-            <DayListItem start={"1.00"} end={"2.00"} />
-            <DayListItem start={"1.00"} end={"2.00"} />
-            <DayListItem start={"1.00"} end={"2.00"} />
-            <DayListItem start={"1.00"} end={"2.00"} />
-            <DayListItem start={"1.00"} end={"2.00"} />
-            <DayListItem start={"1.00"} end={"2.00"} />
-            <DayListItem start={"1.00"} end={"2.00"} />
-            <DayListItem start={"1.00"} end={"2.00"} />
-            <DayListItem start={"1.00"} end={"2.00"} />
-            <DayListItem start={"1.00"} end={"2.00"} />
-            <DayListItem start={"1.00"} end={"2.00"} />
-            <DayListItem start={"1.00"} end={"2.00"} />
-            <DayListItem start={"1.00"} end={"2.00"} />
-            <DayListItem start={"1.00"} end={"2.00"} />
-            <DayListItem start={"1.00"} end={"2.00"} />
-            <DayListItem start={"1.00"} end={"2.00"} />
-            <DayListItem start={"1.00"} end={"2.00"} />
-            <DayListItem start={"1.00"} end={"2.00"} />
-            <DayListItem start={"1.00"} end={"2.00"} />
-            <DayListItem start={"1.00"} end={"2.00"} period="Pm" />
-            <DayListItem start={"1.00"} end={"2.00"} />
-            <DayListItem start={"1.00"} end={"2.00"} />
-            <DayListItem start={"1.00"} end={"2.00"} />
-            <DayListItem start={"1.00"} end={"2.00"} />
-            <DayListItem start={"1.00"} end={"2.00"} />
-            <DayListItem start={"1.00"} end={"2.00"} />
-            <DayListItem start={"1.00"} end={"2.00"} />
+            <DayListItem
+              showPopup={showPopup}
+              start={"1.00"}
+              end={"2.00"}
+              period="Am"
+              disabled
+            />
+            <DayListItem
+              showPopup={showPopup}
+              start={"1.00"}
+              end={"2.00"}
+              disabled
+              available
+            />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
+            <DayListItem
+              showPopup={showPopup}
+              start={"1.00"}
+              end={"2.00"}
+              period="Pm"
+            />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
+            <DayListItem showPopup={showPopup} start={"1.00"} end={"2.00"} />
           </DayList>
         )}
       </div>

@@ -6,8 +6,8 @@ import { SignupPatient, SignupProvider } from "./signup/Signup";
 
 export default function Login() {
   const [menu, setMenu] = useState(true);
-  const [tab, setTab] = useState("signup");
-  const [type, setType] = useState("Provider");
+  const [tab, setTab] = useState("signin");
+  const [type, setType] = useState("Patient");
 
   return (
     <>

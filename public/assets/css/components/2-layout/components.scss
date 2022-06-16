@@ -553,6 +553,7 @@
   }
 }
 .switchCheck {
+  cursor: pointer;
   position: relative;
   width: 42px;
   flex-shrink: 0;
@@ -606,6 +607,7 @@
   }
 
   &__button {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;

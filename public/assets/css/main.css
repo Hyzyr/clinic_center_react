@@ -921,6 +921,7 @@ li {
 }
 
 .switchCheck {
+  cursor: pointer;
   position: relative;
   width: 42px;
   -ms-flex-negative: 0;
@@ -976,6 +977,7 @@ li {
   transition-property: left, background-color, transform, -webkit-transform;
 }
 .switchCheck__button {
+  cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -7933,6 +7935,9 @@ li {
     font-size: 16px;
     margin: 0 15px 0 0;
   }
+  .tasks__inner-field-calendar .customSelect {
+    margin: 0;
+  }
   .tasks__inner-field-check {
     margin: 2px 0;
   }
@@ -8500,6 +8505,11 @@ li {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+  }
+  .tasks__inner-field-buttons .button {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
   }
   .tasks__inner-field-buttons .button,
 .tasks__inner-field-buttons .switchCheck__button,

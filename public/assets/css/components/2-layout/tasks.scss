@@ -834,6 +834,9 @@
             font-size: 16px;
             margin: 0 15px 0 0;
           }
+          .customSelect {
+            margin: 0;
+          }
         }
 
         &-check {
@@ -971,6 +974,9 @@
         }
         &-buttons {
           flex-direction: column;
+          .button {
+            justify-content: flex-start;
+          }
 
           .button,
           .switchCheck__button,
